@@ -1033,7 +1033,7 @@ function Trailer() {
   );
 }
 
-// Expose for scroll-driven embed
+// Expose for the standalone trailer and the home preview.
 Object.assign(window, {
   Trailer,
   TrailerInner,

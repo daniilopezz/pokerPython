@@ -10,7 +10,7 @@ Solver Poker es una aplicación web que combina:
 - **Asistente AI en tiempo real** — recomendaciones de acción basadas en equity, posición y contexto
 - **Dashboard de analítica** — métricas persistidas, curva de EV, distribución de acciones y errores frecuentes
 - **Ranking de salas** — comparativa servida desde API por seguridad, UX y tráfico
-- **Trailer cinemático** — presentación scroll-driven del producto
+- **Trailer cinemático** — presentación reproducible del producto
 
 Todo el motor de cálculo de poker (evaluador de manos, Monte Carlo equity, decisor CPU) está implementado en JavaScript puro sin dependencias, compartido entre backend y frontend.
 
@@ -103,7 +103,7 @@ poker/
 │       │   ├── assistant/     # Asistente AI
 │       │   ├── dashboard/     # Dashboard analítico
 │       │   ├── practice/      # Simulador heads-up
-│       │   └── trailer/       # Trailer cinemático scroll-driven
+│       │   └── trailer/       # Trailer cinemático reusable
 │       ├── services/          # api-client.js (fetch wrapper)
 │       ├── components/        # Helpers de cartas (vanilla)
 │       └── shared/            # ui.js (nav, reveal scroll)

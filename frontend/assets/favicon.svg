@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Solver Poker</title>
+  <defs>
+    <linearGradient id="gold" x1="16" x2="48" y1="10" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f2d17a"/>
+      <stop offset="1" stop-color="#a97823"/>
+    </linearGradient>
+    <linearGradient id="felt" x1="12" x2="54" y1="14" y2="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#287a55"/>
+      <stop offset="1" stop-color="#123c2c"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#151411"/>
+  <rect x="7" y="7" width="50" height="50" rx="11" fill="url(#felt)" stroke="url(#gold)" stroke-width="2"/>
+  <path d="M32 10c-7 9-16 15-16 24 0 6 4.6 10.2 10.1 10.2 2.7 0 5-1 6.1-2.7-.4 5.1-2.2 8.4-5.8 12.5h11.2c-3.6-4.1-5.4-7.4-5.8-12.5 1.1 1.7 3.4 2.7 6.1 2.7C43.4 44.2 48 40 48 34c0-9-9-15-16-24z" fill="url(#gold)"/>
+  <path d="M24 31.8c0-3.8 3.2-7.1 8-12.7 4.8 5.6 8 8.9 8 12.7 0 2.9-2.2 4.9-5.1 4.9-1.5 0-2.9-.5-3.8-1.6l-.9-1.1-.9 1.1c-.9 1.1-2.3 1.6-3.8 1.6-2.9 0-5.5-2-5.5-4.9z" fill="#151411" opacity=".18"/>
+</svg>

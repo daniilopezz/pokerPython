@@ -1,30 +1,30 @@
-// Scroll-driven embed of the Solver trailer. Mounts inside a tall section;
-// the playhead is driven by the user's scroll position through that section.
+// Compact autoplay trailer for the home page.
 // Requires animations.jsx + trailer-scenes.jsx to be loaded first.
 
-function ScrollTrailerStage() {
-  const [time, setTime] = React.useState(0);
-  const [scale, setScale] = React.useState(1);
-  const sectionRef = React.useRef(null);
-  const stickyRef = React.useRef(null);
-  const canvasRef = React.useRef(null);
-  const W = 1920, H = 1080;
+function HomeTrailerPreview() {
+  const W = 1920;
+  const H = 1080;
   const DURATION = window.TrailerDuration || 16;
+  const [time, setTime] = React.useState(0);
+  const [playing, setPlaying] = React.useState(() => {
+    return !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  });
+  const [scale, setScale] = React.useState(1);
+  const frameRef = React.useRef(null);
+  const rafRef = React.useRef(null);
+  const lastTsRef = React.useRef(null);
 
-  // Auto-scale canvas to fit inner area width
   React.useEffect(() => {
     const measure = () => {
-      const el = stickyRef.current;
-      if (!el) return;
-      const padY = 0;
-      const w = el.clientWidth;
-      const h = el.clientHeight - padY;
-      const s = Math.min(w / W, h / H);
+      const frame = frameRef.current;
+      if (!frame) return;
+      const s = Math.min(frame.clientWidth / W, frame.clientHeight / H);
       setScale(Math.max(0.05, s));
     };
+
     measure();
     const ro = new ResizeObserver(measure);
-    if (stickyRef.current) ro.observe(stickyRef.current);
+    if (frameRef.current) ro.observe(frameRef.current);
     window.addEventListener("resize", measure);
     return () => {
       ro.disconnect();
@@ -32,182 +32,131 @@ function ScrollTrailerStage() {
     };
   }, []);
 
-  // Map scroll within section → time 0..duration
   React.useEffect(() => {
-    let rafId = null;
-    const onScroll = () => {
-      if (rafId) return;
-      rafId = requestAnimationFrame(() => {
-        rafId = null;
-        const sec = sectionRef.current;
-        if (!sec) return;
-        const rect = sec.getBoundingClientRect();
-        const total = sec.offsetHeight - window.innerHeight;
-        const scrolled = -rect.top;
-        const progress = Math.max(0, Math.min(1, scrolled / total));
-        setTime(progress * DURATION);
-      });
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncMotionPreference = () => {
+      if (media.matches) setPlaying(false);
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [DURATION]);
+
+    syncMotionPreference();
+    media.addEventListener("change", syncMotionPreference);
+    return () => media.removeEventListener("change", syncMotionPreference);
+  }, []);
+
+  React.useEffect(() => {
+    if (!playing) {
+      lastTsRef.current = null;
+      return;
+    }
+
+    const step = (ts) => {
+      if (lastTsRef.current == null) lastTsRef.current = ts;
+      const dt = (ts - lastTsRef.current) / 1000;
+      lastTsRef.current = ts;
+      setTime((current) => {
+        const next = current + dt;
+        return next >= DURATION ? next % DURATION : next;
+      });
+      rafRef.current = requestAnimationFrame(step);
+    };
+
+    rafRef.current = requestAnimationFrame(step);
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      lastTsRef.current = null;
+    };
+  }, [playing, DURATION]);
+
+  React.useEffect(() => {
+    const onVisibilityChange = () => {
+      if (document.hidden) setPlaying(false);
+    };
+
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", onVisibilityChange);
+  }, []);
 
   const ctxValue = React.useMemo(
-    () => ({ time, duration: DURATION, playing: false, setTime: () => {}, setPlaying: () => {} }),
-    [time]
+    () => ({ time, duration: DURATION, playing, setTime, setPlaying }),
+    [time, DURATION, playing]
   );
 
-  // progress bar pct
-  const progressPct = (time / DURATION) * 100;
+  const progressPct = DURATION > 0 ? (time / DURATION) * 100 : 0;
+  const formatTime = (value) => {
+    const seconds = Math.max(0, Math.floor(value));
+    return `0:${String(seconds).padStart(2, "0")}`;
+  };
 
   return (
-    <section
-      ref={sectionRef}
-      style={{
-        position: "relative",
-        height: "320vh",
-        background: "oklch(0.06 0.01 60)",
-      }}
-      data-screen-label="trailer-scroll"
-    >
-      <div
-        ref={stickyRef}
-        style={{
-          position: "sticky",
-          top: 0,
-          height: "100vh",
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          overflow: "hidden",
-        }}
-      >
-        {/* Eyebrow + scroll hint */}
-        <div
-          style={{
-            position: "absolute",
-            top: 32,
-            left: 0,
-            right: 0,
-            display: "flex",
-            justifyContent: "center",
-            zIndex: 50,
-            pointerEvents: "none",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 14,
-              padding: "10px 18px",
-              borderRadius: 999,
-              background: "oklch(0 0 0 / 0.55)",
-              backdropFilter: "blur(14px)",
-              border: "1px solid oklch(0.28 0.01 60)",
-            }}
-          >
-            <span
+    <section className="trailer-preview" data-screen-label="trailer-preview">
+      <div className="container trailer-preview-grid">
+        <div className="trailer-preview-copy reveal">
+          <div className="eyebrow"><span className="dot"></span>Trailer cinemático</div>
+          <h2 className="font-display">Una mano en 16 segundos.</h2>
+          <p>
+            Un vistazo cinematográfico al flujo de Solver: cartas, equity,
+            apuesta y recomendación AI en una sola secuencia.
+          </p>
+          <div className="trailer-preview-actions">
+            <a className="btn btn-primary btn-lg" href="trailer.html">Ver en pantalla completa</a>
+            <a className="btn btn-ghost btn-lg" href="practicar.html">Jugar demo</a>
+          </div>
+        </div>
+
+        <div className="trailer-preview-player reveal" aria-label="Trailer de Solver Poker">
+          <div className="trailer-preview-frame" ref={frameRef}>
+            <div
+              className="trailer-preview-canvas"
               style={{
-                width: 8,
-                height: 8,
-                borderRadius: "50%",
-                background: "var(--gold)",
-                boxShadow: "0 0 12px var(--gold)",
-              }}
-            />
-            <span
-              style={{
-                fontFamily: "JetBrains Mono, monospace",
-                fontSize: 11,
-                letterSpacing: "0.22em",
-                textTransform: "uppercase",
-                color: "var(--text-mute)",
+                width: W,
+                height: H,
+                transform: `scale(${scale})`,
               }}
             >
-              Scroll para reproducir · Solver trailer
-            </span>
+              <window.TimelineContext.Provider value={ctxValue}>
+                <window.TrailerInner />
+              </window.TimelineContext.Provider>
+            </div>
           </div>
-        </div>
 
-        {/* Canvas */}
-        <div
-          ref={canvasRef}
-          style={{
-            width: W,
-            height: H,
-            background: "oklch(0.09 0.01 60)",
-            position: "relative",
-            transform: `scale(${scale})`,
-            transformOrigin: "center center",
-            flexShrink: 0,
-            overflow: "hidden",
-            boxShadow: "0 30px 100px oklch(0 0 0 / 0.6)",
-          }}
-        >
-          <window.TimelineContext.Provider value={ctxValue}>
-            <window.TrailerInner />
-          </window.TimelineContext.Provider>
-        </div>
+          <div className="trailer-preview-controls">
+            <button
+              className="trailer-play-button"
+              type="button"
+              onClick={() => setPlaying((value) => !value)}
+              aria-label={playing ? "Pausar trailer" : "Reproducir trailer"}
+              title={playing ? "Pausar trailer" : "Reproducir trailer"}
+            >
+              {playing ? (
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 5h3v14H7zM14 5h3v14h-3z" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              )}
+            </button>
 
-        {/* Progress bar */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: 28,
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: "min(560px, 70%)",
-            display: "flex",
-            alignItems: "center",
-            gap: 12,
-            zIndex: 50,
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "JetBrains Mono, monospace",
-              fontSize: 11,
-              color: "var(--gold)",
-              letterSpacing: "0.18em",
-              width: 56,
-            }}
-          >
-            {time.toFixed(1).padStart(4, "0")}s
-          </span>
-          <div
-            style={{
-              flex: 1,
-              height: 3,
-              background: "oklch(0.22 0.014 60)",
-              borderRadius: 2,
-              overflow: "hidden",
-            }}
-          >
-            <div
-              style={{
-                width: progressPct + "%",
-                height: "100%",
-                background:
-                  "linear-gradient(90deg, oklch(0.82 0.14 200), oklch(0.82 0.14 82))",
-                transition: "none",
+            <input
+              className="trailer-progress"
+              type="range"
+              min="0"
+              max={DURATION}
+              step="0.01"
+              value={time}
+              aria-label="Progreso del trailer"
+              style={{ "--progress": `${progressPct}%` }}
+              onChange={(event) => {
+                setTime(Number(event.target.value));
+                setPlaying(false);
               }}
             />
+
+            <span className="trailer-time">
+              {formatTime(time)} / {formatTime(DURATION)}
+            </span>
           </div>
-          <span
-            style={{
-              fontFamily: "JetBrains Mono, monospace",
-              fontSize: 11,
-              color: "var(--text-dim)",
-              letterSpacing: "0.18em",
-              width: 40,
-              textAlign: "right",
-            }}
-          >
-            {DURATION}s
-          </span>
         </div>
       </div>
     </section>
@@ -217,5 +166,5 @@ function ScrollTrailerStage() {
 const embedEl = document.getElementById("trailer-embed-root");
 if (embedEl) {
   const root = ReactDOM.createRoot(embedEl);
-  root.render(<ScrollTrailerStage />);
+  root.render(<HomeTrailerPreview />);
 }
