@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/assets/:path*", "destination": "/frontend/assets/:path*" },
+    { "source": "/src/:path*", "destination": "/frontend/src/:path*" },
+    { "source": "/:page.html", "destination": "/frontend/pages/:page.html" }
+  ]
+}

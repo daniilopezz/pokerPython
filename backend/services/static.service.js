@@ -7,7 +7,6 @@ const { setBaseHeaders } = require("../utils/http");
 const gzip = require("node:util").promisify(zlib.gzip);
 
 const pageFiles = new Set([
-  "index.html",
   "aprende.html",
   "ranking.html",
   "practicar.html",
@@ -79,8 +78,8 @@ function resolveStaticTarget(pathname) {
   const cleanPath = decodeURIComponent(pathname);
   if (cleanPath.includes("\0")) return null;
 
-  if (cleanPath === "/" || cleanPath === "") {
-    return safeJoin(config.pagesDir, "index.html");
+  if (cleanPath === "/" || cleanPath === "" || cleanPath === "/index.html") {
+    return safeJoin(config.rootDir, "index.html");
   }
 
   const pageName = cleanPath.replace(/^\//, "");

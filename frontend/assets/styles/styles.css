@@ -165,6 +165,162 @@ section { position: relative; padding: 120px 0; }
 .btn-sm { padding: 8px 14px; font-size: 12px; }
 .btn-lg { padding: 16px 28px; font-size: 15px; }
 
+/* ---------------- Compliance overlays ---------------- */
+html.solver-age-lock {
+  overflow: hidden;
+}
+
+.solver-age-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at 50% 20%, oklch(0.32 0.07 150 / 0.42), transparent 52%),
+    oklch(0.06 0.01 60 / 0.94);
+  backdrop-filter: blur(18px) saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+}
+
+.solver-age-card {
+  width: min(100%, 560px);
+  border: 1px solid oklch(0.78 0.13 82 / 0.32);
+  border-radius: var(--r-lg);
+  background:
+    linear-gradient(180deg, oklch(0.18 0.014 60 / 0.96), oklch(0.11 0.01 60 / 0.98));
+  box-shadow: 0 28px 80px oklch(0 0 0 / 0.58), inset 0 1px 0 oklch(1 0 0 / 0.08);
+  padding: clamp(28px, 5vw, 44px);
+  text-align: left;
+}
+
+.solver-age-card:focus {
+  outline: none;
+}
+
+.solver-age-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.solver-age-card h2 {
+  margin: 14px 0 14px;
+  font-family: "Cormorant", "Cormorant Garamond", serif;
+  font-size: clamp(42px, 8vw, 66px);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.solver-age-card p {
+  margin: 0;
+  color: var(--text-mute);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.solver-age-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.solver-age-denied {
+  background:
+    radial-gradient(ellipse at 50% 30%, oklch(0.38 0.16 25 / 0.34), transparent 50%),
+    oklch(0.05 0.012 35 / 0.98);
+}
+
+.solver-age-denied .solver-age-card {
+  text-align: center;
+  border-color: oklch(0.52 0.2 25 / 0.46);
+}
+
+.solver-age-denied .solver-age-eyebrow {
+  color: oklch(0.78 0.13 25);
+}
+
+.solver-cookie-banner {
+  position: fixed;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: oklch(0.13 0.012 60 / 0.94);
+  box-shadow: 0 18px 60px oklch(0 0 0 / 0.5);
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+}
+
+.solver-cookie-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.solver-cookie-copy strong {
+  font-size: 14px;
+}
+
+.solver-cookie-copy p {
+  max-width: 760px;
+  margin: 0;
+  color: var(--text-mute);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.solver-cookie-copy a {
+  width: fit-content;
+  color: var(--gold);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.solver-cookie-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 8px;
+}
+
+@media (max-width: 680px) {
+  .solver-age-actions,
+  .solver-cookie-actions,
+  .solver-cookie-banner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .solver-age-actions .btn,
+  .solver-cookie-actions .btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .solver-cookie-banner {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: calc(100% - 24px);
+  }
+}
+
 /* ---------------- Playing cards ---------------- */
 .card-3d {
   width: 80px; height: 112px;
