@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Asistente AI — Solver Poker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="/assets/styles/styles.css" />
+</head>
+<body data-screen-label="05 Asistente AI">
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" style="text-decoration:none;color:inherit">
+      <div class="brand-mark"></div>
+      <div><b>Solver</b><small style="display:block;margin-top:-2px">Poker · AI</small></div>
+    </a>
+    <div class="nav-links">
+      <a data-nav-link href="index.html">Inicio</a>
+      <a data-nav-link href="aprende.html">Aprende</a>
+      <a data-nav-link href="ranking.html">Ranking</a>
+      <a data-nav-link href="practicar.html">Practicar</a>
+      <a data-nav-link href="asistente.html">Asistente AI</a>
+      <a data-nav-link href="dashboard.html">Dashboard</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="practicar.html">Jugar demo</a>
+      <a class="btn btn-primary btn-sm" href="dashboard.html">Ver análisis →</a>
+      <button class="burger" data-burger aria-label="Menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="drawer" data-drawer>
+    <a data-nav-link href="index.html">Inicio</a>
+    <a data-nav-link href="aprende.html">Aprende</a>
+    <a data-nav-link href="ranking.html">Ranking</a>
+    <a data-nav-link href="practicar.html">Practicar</a>
+    <a data-nav-link href="asistente.html">Asistente AI</a>
+    <a data-nav-link href="dashboard.html">Dashboard</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<section style="padding:140px 0 40px;position:relative;overflow:hidden">
+  <div class="hero-bg" style="opacity:0.45"></div>
+  <div class="container" style="position:relative;z-index:2">
+    <div class="eyebrow reveal"><span class="dot" style="background:var(--ai);box-shadow:0 0 12px var(--ai)"></span>Asistente AI · Decisiones en tiempo real</div>
+    <h1 class="font-display reveal" style="font-size:clamp(40px,5.5vw,76px);margin:14px 0 16px;max-width:1000px">
+      Estás en la mesa. Nosotros<br/>hacemos las <em style="background:linear-gradient(180deg,var(--ai),var(--ai-deep));-webkit-background-clip:text;background-clip:text;color:transparent">matemáticas</em>.
+    </h1>
+    <p class="reveal" style="color:var(--text-mute);max-width:680px;font-size:17px;margin:0">
+      Introduce tu mano, las cartas comunitarias y el contexto. La AI calcula equity, contrasta con tu posición y el estilo del rival, y te devuelve la acción con mayor expectativa — explicada en lenguaje claro.
+    </p>
+  </div>
+</section>
+
+<!-- ASSISTANT APP -->
+<section style="padding:24px 0 100px">
+  <div class="container">
+    <div id="assistant-root"></div>
+  </div>
+</section>
+
+<!-- EXAMPLE -->
+<section style="padding:0 0 80px">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Ejemplo · Cómo razona la AI</div>
+      <h2 class="font-display">Una recomendación, contada como lo haría un mentor.</h2>
+    </div>
+    <div class="panel reveal" style="padding:40px;display:grid;grid-template-columns:240px 1fr;gap:40px;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div>
+          <div class="font-mono" style="font-size:10px;color:var(--text-dim);letter-spacing:.18em">TU MANO</div>
+          <div style="display:flex;gap:6px;margin-top:8px">
+            <div class="card-3d card-sm red"><div class="corner tl"><span class="rank">A</span><span class="suit">♥</span></div><div class="pip">♥</div></div>
+            <div class="card-3d card-sm red"><div class="corner tl"><span class="rank">K</span><span class="suit">♥</span></div><div class="pip">♥</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="font-mono" style="font-size:10px;color:var(--text-dim);letter-spacing:.18em">BOARD</div>
+          <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+            <div class="card-3d card-sm red"><div class="corner tl"><span class="rank">7</span><span class="suit">♥</span></div><div class="pip">♥</div></div>
+            <div class="card-3d card-sm red"><div class="corner tl"><span class="rank">2</span><span class="suit">♦</span></div><div class="pip">♦</div></div>
+            <div class="card-3d card-sm red"><div class="corner tl"><span class="rank">10</span><span class="suit">♥</span></div><div class="pip">♥</div></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
+          <span class="pill">Flop · 3 jugadores</span>
+          <span class="pill">Posición: BTN</span>
+          <span class="pill">Bote: 120 · Call: 40</span>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ai);letter-spacing:.2em;margin-bottom:6px">RECOMENDACIÓN AI</div>
+        <div class="font-display" style="font-size:64px;background:linear-gradient(180deg,var(--ai),var(--ai-deep));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1">Raise 80</div>
+        <div class="font-mono" style="font-size:12px;color:var(--gold);margin-top:4px">≈ 60% del bote · EV estimado +12.4bb</div>
+        <p style="margin:20px 0 0;font-size:15px;color:var(--text);line-height:1.65;max-width:600px">
+          Tu mano tiene una fuerza media-alta en este flop. Proyecto de color al as (9 outs), overcards, y eres BTN — la posición te permite presionar a rivales con proyectos incompletos. Evita el all-in: todavía hay combinaciones superiores posibles (sets, two-pair) y el SPR es suficiente para jugar turn y river con flexibilidad.
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px;border-top:1px solid var(--line-soft);padding-top:20px">
+          <div>
+            <div class="font-mono" style="font-size:9px;color:var(--text-dim);letter-spacing:.15em">EQUITY</div>
+            <div class="font-display" style="font-size:24px;margin-top:4px">54%</div>
+          </div>
+          <div>
+            <div class="font-mono" style="font-size:9px;color:var(--text-dim);letter-spacing:.15em">POT ODDS</div>
+            <div class="font-display" style="font-size:24px;margin-top:4px">25%</div>
+          </div>
+          <div>
+            <div class="font-mono" style="font-size:9px;color:var(--text-dim);letter-spacing:.15em">RIESGO</div>
+            <div class="font-display" style="font-size:24px;margin-top:4px;color:var(--gold)">Medio</div>
+          </div>
+          <div>
+            <div class="font-mono" style="font-size:9px;color:var(--text-dim);letter-spacing:.15em">CONFIANZA</div>
+            <div class="font-display" style="font-size:24px;margin-top:4px;color:var(--ai)">82%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="responsible reveal">
+      <div class="ico">⚠</div>
+      <div class="body">
+        <h4>Juego responsable</h4>
+        <p>Las recomendaciones del asistente son una herramienta de apoyo. Las matemáticas del póker no eliminan la varianza. Juega dentro de tus límites. +18.</p>
+      </div>
+    </div>
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="brand" style="margin-bottom:16px">
+          <div class="brand-mark"></div>
+          <div><b>Solver</b><small style="display:block;margin-top:-2px">Poker · AI</small></div>
+        </div>
+        <p style="color:var(--text-mute);font-size:13px;max-width:300px;margin:0">Estrategia, no suerte.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Plataforma</h5>
+        <a href="aprende.html">Aprende</a>
+        <a href="practicar.html">Practicar</a>
+        <a href="asistente.html">Asistente AI</a>
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+      <div class="foot-col">
+        <h5>Recursos</h5>
+        <a href="ranking.html">Ranking</a>
+        <a href="aprende.html#manos">Manos</a>
+        <a href="aprende.html#terminos">Glosario</a>
+      </div>
+      <div class="foot-col">
+        <h5>Legal</h5>
+        <a href="terminos.html">Términos</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="juego-responsable.html">Juego responsable</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Solver Poker.</span>
+      <span>+18 · Juega con responsabilidad</span>
+    </div>
+  </div>
+</footer>
+
+<!-- React -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script src="/shared/poker/engine.js"></script>
+<script src="/shared/poker/strategy.js"></script>
+<script src="/src/services/api-client.js"></script>
+<script src="/src/shared/ui.js"></script>
+<script type="text/babel" src="/src/apps/assistant/assistant-app.jsx"></script>
+
+</body>
+</html>

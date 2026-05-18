@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aprende — Solver Poker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="/assets/styles/styles.css" />
+</head>
+<body data-screen-label="02 Aprende">
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" style="text-decoration:none;color:inherit">
+      <div class="brand-mark"></div>
+      <div><b>Solver</b><small style="display:block;margin-top:-2px">Poker · AI</small></div>
+    </a>
+    <div class="nav-links">
+      <a data-nav-link href="index.html">Inicio</a>
+      <a data-nav-link href="aprende.html">Aprende</a>
+      <a data-nav-link href="ranking.html">Ranking</a>
+      <a data-nav-link href="practicar.html">Practicar</a>
+      <a data-nav-link href="asistente.html">Asistente AI</a>
+      <a data-nav-link href="dashboard.html">Dashboard</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="practicar.html">Jugar demo</a>
+      <a class="btn btn-primary btn-sm" href="asistente.html">Probar AI →</a>
+      <button class="burger" data-burger aria-label="Menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="drawer" data-drawer>
+    <a data-nav-link href="index.html">Inicio</a>
+    <a data-nav-link href="aprende.html">Aprende</a>
+    <a data-nav-link href="ranking.html">Ranking</a>
+    <a data-nav-link href="practicar.html">Practicar</a>
+    <a data-nav-link href="asistente.html">Asistente AI</a>
+    <a data-nav-link href="dashboard.html">Dashboard</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<section style="padding:160px 0 60px;position:relative;overflow:hidden">
+  <div class="hero-bg" style="opacity:0.6"></div>
+  <div class="container" style="position:relative;z-index:2">
+    <div class="eyebrow reveal"><span class="dot"></span>Guía · No Limit Texas Hold'em</div>
+    <h1 class="font-display reveal" style="font-size:clamp(48px,7vw,96px);margin:18px 0 24px;max-width:900px">
+      Aprende a jugar al póker.<br/>
+      <em style="background:linear-gradient(180deg,var(--gold),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent">Bien</em>, desde el principio.
+    </h1>
+    <p class="reveal" style="color:var(--text-mute);max-width:640px;font-size:18px;margin:0">
+      Todo lo que necesitas para sentarte en una mesa sin sentirte perdido: las reglas, el valor de cada mano, las fases de una partida y los términos que vas a usar en cada turno.
+    </p>
+
+    <!-- chapter index -->
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:36px" class="reveal">
+      <a class="pill" style="text-decoration:none;cursor:pointer" href="#objetivo">01 · El objetivo</a>
+      <a class="pill" style="text-decoration:none;cursor:pointer" href="#manos">02 · Valor de manos</a>
+      <a class="pill" style="text-decoration:none;cursor:pointer" href="#fases">03 · Fases de la partida</a>
+      <a class="pill" style="text-decoration:none;cursor:pointer" href="#terminos">04 · Términos clave</a>
+      <a class="pill" style="text-decoration:none;cursor:pointer" href="#ejemplo">05 · Una mano completa</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 — OBJETIVO ============ -->
+<section id="objetivo" style="padding-top:60px">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">01 · El objetivo</div>
+      <h2 class="font-display">El que mejor lee la mesa, gana.</h2>
+      <p>En Texas Hold'em, cada jugador recibe dos cartas privadas y se reparten cinco comunitarias. Ganas el bote si formas la mejor mano de cinco cartas — o si todos tus rivales pasan.</p>
+    </div>
+
+    <div class="learn-grid">
+      <div class="panel learn-card reveal" style="padding:32px;min-height:280px">
+        <div class="pill pill-gold">Reglas en 30 segundos</div>
+        <ol style="margin:18px 0 0;padding-left:18px;color:var(--text-mute);font-size:14px;line-height:1.9">
+          <li>El crupier reparte <b style="color:var(--text)">2 cartas privadas</b> a cada jugador.</li>
+          <li>Se hacen apuestas en cuatro rondas: preflop, flop, turn y river.</li>
+          <li>En el flop se muestran <b style="color:var(--text)">3 cartas comunitarias</b>; en el turn, una más; en el river, la última.</li>
+          <li>El ganador es quien presenta la mejor combinación de 5 cartas — o el último que queda sin retirarse.</li>
+        </ol>
+      </div>
+
+      <div class="panel learn-card reveal" style="padding:32px;display:flex;flex-direction:column;justify-content:space-between;min-height:280px">
+        <div>
+          <div class="pill pill-gold">Anatomía de la mesa</div>
+          <h3 style="font-family:Cormorant,serif;font-size:28px;font-weight:500;margin:16px 0 8px">Posiciones</h3>
+          <p style="color:var(--text-mute);font-size:13px;margin:0">Cuanto más tarde actúes, más información tienes. La posición es la variable más infravalorada por principiantes.</p>
+        </div>
+        <!-- positions diagram -->
+        <div style="position:relative;height:140px;margin-top:24px">
+          <div style="position:absolute;inset:0;border:1px solid var(--line);border-radius:200px;background:radial-gradient(ellipse,var(--felt-edge),transparent 70%)"></div>
+          <span class="pill" style="position:absolute;top:6px;left:50%;transform:translateX(-50%)">UTG</span>
+          <span class="pill" style="position:absolute;top:30%;left:12%">MP</span>
+          <span class="pill" style="position:absolute;top:30%;right:12%">CO</span>
+          <span class="pill pill-gold" style="position:absolute;bottom:30%;right:12%">BTN</span>
+          <span class="pill" style="position:absolute;bottom:30%;left:12%">SB</span>
+          <span class="pill" style="position:absolute;bottom:6px;left:50%;transform:translateX(-50%)">BB</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 — VALOR DE MANOS ============ -->
+<section id="manos" style="background:linear-gradient(180deg,var(--bg-0),var(--bg-1) 30%,var(--bg-1) 70%,var(--bg-0))">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">02 · Jerarquía</div>
+      <h2 class="font-display">Las diez manos, de la más fuerte a la más débil.</h2>
+      <p>Memoriza esta lista. Es el ABC del juego — y muchas decisiones se reducen a saber dónde cae tu mano en ella.</p>
+    </div>
+
+    <div class="panel reveal" style="padding:8px">
+      <div class="hand-ranking">
+
+        <div class="hand-row">
+          <div class="rank">01</div>
+          <div>
+            <div class="name">Escalera Real</div>
+            <div style="font-size:11px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;margin-top:2px">10·J·Q·K·A del mismo palo</div>
+          </div>
+          <div class="ex">
+            <div class="card-3d card-xs"><div class="pip">10</div></div>
+            <div class="card-3d card-xs"><div class="pip">J</div></div>
+            <div class="card-3d card-xs"><div class="pip">Q</div></div>
+            <div class="card-3d card-xs"><div class="pip">K</div></div>
+            <div class="card-3d card-xs"><div class="pip">A</div></div>
+          </div>
+        </div>
+
+        <div class="hand-row">
+          <div class="rank">02</div>
+          <div>
+            <div class="name">Escalera de color</div>
+            <div style="font-size:11px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;margin-top:2px">5 consecutivas, mismo palo</div>
+          </div>
+          <div class="ex">
+            <div class="card-3d card-xs red"><div class="pip">5</div></div>
+            <div class="card-3d card-xs red"><div class="pip">6</div></div>
+            <div class="card-3d card-xs red"><div class="pip">7</div></div>
+            <div class="card-3d card-xs red"><div class="pip">8</div></div>
+            <div class="card-3d card-xs red"><div class="pip">9</div></div>
+          </div>
+        </div>
+
+        <div class="hand-row">
+          <div class="rank">03</div>
+          <div>
+            <div class="name">Póker</div>
+            <div style="font-size:11px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;margin-top:2px">Cuatro cartas iguales</div>
+          </div>
+          <div class="ex">
+            <div class="card-3d card-xs"><div class="pip">Q</div></div>
+            <div class="card-3d card-xs red"><div class="pip">Q</div></div>
+            <div class="card-3d card-xs red"><div class="pip">Q</div></div>
+            <div class="card-3d card-xs"><div class="pip">Q</div></div>
+            <div class="card-3d card-xs"><div class="pip">5</div></div>
+          </div>
+        </div>
+
+        <div class="hand-row">
+          <div class="rank">04</div>
+          <div>
+            <div class="name">Full House</div>
+            <div style="font-size:11px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;margin-top:2px">Trío + pareja</div>
+          </div>
+          <div class="ex">
+            <div class="card-3d card-xs"><div class="pip">J</div></div>
+            <div class="card-3d card-xs red"><div class="pip">J</div></div>
+            <div class="card-3d card-xs"><div class="pip">J</div></div>
+            <div class="card-3d card-xs red"><div class="pip">7</div></div>
+            <div class="card-3d card-xs"><div class="pip">7</div></div>
+          </div>
+        </div>
+
+        <div class="hand-row">
+          <div class="rank">05</div>
+          <div>
+            <div class="name">Color</div>
+            <div style="font-size:11px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;margin-top:2px">5 cartas mismo palo</div>
+          </div>
+          <div class="ex">
+            <div class="card-3d card-xs red"><div class="pip">A</div></div>
+            <div class="card-3d card-xs red"><div class="pip">K</div></div>
+            <div class="card-3d card-xs red"><div class="pip">9</div></div>
+            <div class="card-3d card-xs red"><div class="pip">6</div></div>
+            <div class="card-3d card-xs red"><div class="pip">2</div></div>
+          </div>
+        </div>
+
+        <div class="hand-row">
+          <div class="rank">06</div>
+          <div>
+            <div class="name">Escalera</div>
+            <div style="font-size:11px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;margin-top:2px">5 consecutivas, palos mixtos</div>
+          </div>
+          <div class="ex">
+            <div class="card-3d card-xs"><div class="pip">4</div></div>
+            <div class="card-3d card-xs red"><div class="pip">5</div></div>
+            <div class="card-3d card-xs"><div class="pip">6</div></div>
+            <div class="card-3d card-xs red"><div class="pip">7</div></div>
+            <div class="card-3d card-xs"><div class="pip">8</div></div>
+          </div>
+        </div>
+
+        <div class="hand-row">
+          <div class="rank">07</div>
+          <div>
+            <div class="name">Trío</div>
+            <div style="font-size:11px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;margin-top:2px">Tres cartas iguales</div>
+          </div>
+          <div class="ex">
+            <div class="card-3d card-xs"><div class="pip">9</div></div>
+            <div class="card-3d card-xs red"><div class="pip">9</div></div>
+            <div class="card-3d card-xs"><div class="pip">9</div></div>
+            <div class="card-3d card-xs red"><div class="pip">A</div></div>
+            <div class="card-3d card-xs"><div class="pip">4</div></div>
+          </div>
+        </div>
+
+        <div class="hand-row">
+          <div class="rank">08</div>
+          <div>
+            <div class="name">Doble pareja</div>
+            <div style="font-size:11px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;margin-top:2px">Dos parejas distintas</div>
+          </div>
+          <div class="ex">
+            <div class="card-3d card-xs"><div class="pip">K</div></div>
+            <div class="card-3d card-xs red"><div class="pip">K</div></div>
+            <div class="card-3d card-xs"><div class="pip">3</div></div>
+            <div class="card-3d card-xs red"><div class="pip">3</div></div>
+            <div class="card-3d card-xs"><div class="pip">9</div></div>
+          </div>
+        </div>
+
+        <div class="hand-row">
+          <div class="rank">09</div>
+          <div>
+            <div class="name">Pareja</div>
+            <div style="font-size:11px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;margin-top:2px">Dos cartas iguales</div>
+          </div>
+          <div class="ex">
+            <div class="card-3d card-xs red"><div class="pip">A</div></div>
+            <div class="card-3d card-xs"><div class="pip">A</div></div>
+            <div class="card-3d card-xs"><div class="pip">8</div></div>
+            <div class="card-3d card-xs red"><div class="pip">5</div></div>
+            <div class="card-3d card-xs"><div class="pip">2</div></div>
+          </div>
+        </div>
+
+        <div class="hand-row">
+          <div class="rank">10</div>
+          <div>
+            <div class="name">Carta alta</div>
+            <div style="font-size:11px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;margin-top:2px">Si nadie tiene mejor</div>
+          </div>
+          <div class="ex">
+            <div class="card-3d card-xs red"><div class="pip">A</div></div>
+            <div class="card-3d card-xs"><div class="pip">J</div></div>
+            <div class="card-3d card-xs red"><div class="pip">8</div></div>
+            <div class="card-3d card-xs"><div class="pip">5</div></div>
+            <div class="card-3d card-xs red"><div class="pip">2</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 — FASES ============ -->
+<section id="fases">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">03 · El recorrido</div>
+      <h2 class="font-display">Cuatro rondas. Cuatro decisiones.</h2>
+      <p>Cada mano se desarrolla en cuatro fases. En cada una se reparten cartas comunitarias nuevas y se abre una ronda de apuestas.</p>
+    </div>
+
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+
+      <div class="panel panel-pad" style="position:relative;overflow:hidden">
+        <div class="font-mono" style="font-size:10px;color:var(--gold);letter-spacing:.2em">FASE 01</div>
+        <div class="font-display" style="font-size:36px;margin:8px 0 12px">Pre-flop</div>
+        <p style="color:var(--text-mute);font-size:13px;margin:0 0 20px">Cada jugador recibe 2 cartas privadas. Se publican blinds y se abre la primera ronda de apuestas.</p>
+        <div style="display:flex;gap:6px">
+          <div class="card-3d card-sm back"></div>
+          <div class="card-3d card-sm back"></div>
+        </div>
+      </div>
+
+      <div class="panel panel-pad" style="position:relative;overflow:hidden">
+        <div class="font-mono" style="font-size:10px;color:var(--gold);letter-spacing:.2em">FASE 02</div>
+        <div class="font-display" style="font-size:36px;margin:8px 0 12px">Flop</div>
+        <p style="color:var(--text-mute);font-size:13px;margin:0 0 20px">El crupier revela 3 cartas comunitarias. Aquí se define el carácter de la mano y los proyectos posibles.</p>
+        <div style="display:flex;gap:6px">
+          <div class="card-3d card-sm red"><div class="corner tl"><span class="rank">10</span><span class="suit">♥</span></div><div class="pip">♥</div></div>
+          <div class="card-3d card-sm"><div class="corner tl"><span class="rank">J</span><span class="suit">♠</span></div><div class="pip">♠</div></div>
+          <div class="card-3d card-sm"><div class="corner tl"><span class="rank">Q</span><span class="suit">♣</span></div><div class="pip">♣</div></div>
+        </div>
+      </div>
+
+      <div class="panel panel-pad" style="position:relative;overflow:hidden">
+        <div class="font-mono" style="font-size:10px;color:var(--gold);letter-spacing:.2em">FASE 03</div>
+        <div class="font-display" style="font-size:36px;margin:8px 0 12px">Turn</div>
+        <p style="color:var(--text-mute);font-size:13px;margin:0 0 20px">Una cuarta carta común. Las apuestas suben porque las manos empiezan a definirse — y a romperse.</p>
+        <div style="display:flex;gap:6px">
+          <div class="card-3d card-sm red" style="opacity:.4"><div class="pip">♥</div></div>
+          <div class="card-3d card-sm" style="opacity:.4"><div class="pip">♠</div></div>
+          <div class="card-3d card-sm" style="opacity:.4"><div class="pip">♣</div></div>
+          <div class="card-3d card-sm red"><div class="corner tl"><span class="rank">K</span><span class="suit">♦</span></div><div class="pip">♦</div></div>
+        </div>
+      </div>
+
+      <div class="panel panel-pad" style="position:relative;overflow:hidden;border-color:oklch(0.78 0.13 82 / 0.35)">
+        <div class="font-mono" style="font-size:10px;color:var(--gold);letter-spacing:.2em">FASE 04</div>
+        <div class="font-display" style="font-size:36px;margin:8px 0 12px">River</div>
+        <p style="color:var(--text-mute);font-size:13px;margin:0 0 20px">La última carta. Showdown si quedan dos o más jugadores. Aquí se cobran los faroles — o se pagan.</p>
+        <div style="display:flex;gap:6px">
+          <div class="card-3d card-sm red" style="opacity:.4"><div class="pip">♥</div></div>
+          <div class="card-3d card-sm" style="opacity:.4"><div class="pip">♠</div></div>
+          <div class="card-3d card-sm" style="opacity:.4"><div class="pip">♣</div></div>
+          <div class="card-3d card-sm red" style="opacity:.4"><div class="pip">♦</div></div>
+          <div class="card-3d card-sm"><div class="corner tl"><span class="rank">A</span><span class="suit">♠</span></div><div class="pip">♠</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Timeline -->
+    <div class="panel reveal" style="margin-top:24px;padding:32px">
+      <div class="font-mono" style="font-size:10px;color:var(--text-dim);letter-spacing:.2em;margin-bottom:16px">CRONOLOGÍA · UNA MANO</div>
+      <div style="position:relative;height:6px;background:var(--bg-3);border-radius:3px;margin:32px 0">
+        <div style="position:absolute;left:0;top:0;height:100%;width:100%;background:linear-gradient(90deg,var(--felt) 0%,var(--gold) 100%);border-radius:3px;opacity:.7"></div>
+        <div style="position:absolute;left:10%;top:-6px;width:18px;height:18px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px var(--gold)"></div>
+        <div style="position:absolute;left:38%;top:-6px;width:18px;height:18px;border-radius:50%;background:var(--gold)"></div>
+        <div style="position:absolute;left:64%;top:-6px;width:18px;height:18px;border-radius:50%;background:var(--gold)"></div>
+        <div style="position:absolute;left:90%;top:-6px;width:18px;height:18px;border-radius:50%;background:var(--gold)"></div>
+        <div style="position:absolute;left:10%;top:18px;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-mute);letter-spacing:.1em">PREFLOP</div>
+        <div style="position:absolute;left:38%;top:18px;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-mute);letter-spacing:.1em">FLOP</div>
+        <div style="position:absolute;left:64%;top:18px;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-mute);letter-spacing:.1em">TURN</div>
+        <div style="position:absolute;left:90%;top:18px;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-mute);letter-spacing:.1em">RIVER</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 — TÉRMINOS ============ -->
+<section id="terminos" style="background:linear-gradient(180deg,var(--bg-0),var(--bg-1) 30%,var(--bg-1) 70%,var(--bg-0))">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">04 · Glosario</div>
+      <h2 class="font-display">Las acciones, en una palabra.</h2>
+      <p>Estos son los seis verbos que se repiten en cada mesa. Domínalos y nunca volverás a pasar tu turno por confusión.</p>
+    </div>
+
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+
+      <div class="panel panel-pad">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <div class="font-display" style="font-size:42px;color:var(--gold)">Bet</div>
+          <span class="pill">Apostar</span>
+        </div>
+        <p style="color:var(--text-mute);font-size:14px;margin-top:8px">Pones fichas en el bote cuando nadie ha apostado todavía en esta ronda. Estás abriendo la conversación.</p>
+      </div>
+
+      <div class="panel panel-pad">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <div class="font-display" style="font-size:42px;color:var(--gold)">Call</div>
+          <span class="pill">Igualar</span>
+        </div>
+        <p style="color:var(--text-mute);font-size:14px;margin-top:8px">Igualas la apuesta vigente para mantenerte en la mano. Decir "ver" cuesta lo que cueste seguir.</p>
+      </div>
+
+      <div class="panel panel-pad">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <div class="font-display" style="font-size:42px;color:var(--gold)">Raise</div>
+          <span class="pill">Subir</span>
+        </div>
+        <p style="color:var(--text-mute);font-size:14px;margin-top:8px">Aumentas la apuesta por encima del rival actual. Mensaje claro: tengo algo, o estoy fingiendo muy bien que lo tengo.</p>
+      </div>
+
+      <div class="panel panel-pad" style="border-color:oklch(0.52 0.20 25 / 0.4)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <div class="font-display" style="font-size:42px;color:oklch(0.78 0.18 25)">Fold</div>
+          <span class="pill pill-red">Retirarse</span>
+        </div>
+        <p style="color:var(--text-mute);font-size:14px;margin-top:8px">Tiras tus cartas. Pierdes lo invertido, pero te ahorras pérdidas mayores. A veces tirar es la mejor jugada del torneo.</p>
+      </div>
+
+      <div class="panel panel-pad">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <div class="font-display" style="font-size:42px;color:var(--gold)">Check</div>
+          <span class="pill">Pasar</span>
+        </div>
+        <p style="color:var(--text-mute);font-size:14px;margin-top:8px">Pasas el turno sin apostar — solo se puede si nadie ha apostado en la ronda actual. Gratis y útil para ver más cartas.</p>
+      </div>
+
+      <div class="panel panel-pad" style="border-color:oklch(0.52 0.20 25 / 0.4);background:oklch(0.52 0.20 25 / 0.06)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <div class="font-display" style="font-size:42px;color:oklch(0.78 0.18 25)">All-in</div>
+          <span class="pill pill-red">Todo</span>
+        </div>
+        <p style="color:var(--text-mute);font-size:14px;margin-top:8px">Apuestas todas tus fichas en una sola decisión. Punto de no retorno: ganas el bote o sales de la mesa.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 — EJEMPLO ============ -->
+<section id="ejemplo">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">05 · En acción</div>
+      <h2 class="font-display">Una mano completa, narrada.</h2>
+      <p>Vamos a seguir una mano paso a paso para juntar todo lo anterior.</p>
+    </div>
+
+    <div class="panel reveal" style="padding:40px">
+      <div style="display:grid;grid-template-columns:240px 1fr;gap:32px;margin-bottom:32px;align-items:center;border-bottom:1px solid var(--line-soft);padding-bottom:32px">
+        <div>
+          <div class="font-mono" style="font-size:10px;color:var(--gold);letter-spacing:.2em">PREFLOP</div>
+          <div class="font-display" style="font-size:42px;margin-top:8px">Tu mano</div>
+          <div style="display:flex;gap:8px;margin-top:16px">
+            <div class="card-3d card-sm red"><div class="corner tl"><span class="rank">A</span><span class="suit">♥</span></div><div class="pip">♥</div><div class="corner br"><span class="rank">A</span><span class="suit">♥</span></div></div>
+            <div class="card-3d card-sm"><div class="corner tl"><span class="rank">K</span><span class="suit">♠</span></div><div class="pip">♠</div><div class="corner br"><span class="rank">K</span><span class="suit">♠</span></div></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-display" style="font-size:32px;margin:0 0 12px">As-Rey suited. Una mano top-5.</h3>
+          <p style="color:var(--text-mute);margin:0;font-size:15px;line-height:1.6">Estás en el botón. La acción llega a ti con un raise estándar a 3bb. Subes a 9bb (3-bet) para tomar la iniciativa y aislar. El BB iguala.</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:240px 1fr;gap:32px;margin-bottom:32px;align-items:center;border-bottom:1px solid var(--line-soft);padding-bottom:32px">
+        <div>
+          <div class="font-mono" style="font-size:10px;color:var(--gold);letter-spacing:.2em">FLOP</div>
+          <div class="font-display" style="font-size:42px;margin-top:8px">Mesa</div>
+          <div style="display:flex;gap:8px;margin-top:16px">
+            <div class="card-3d card-sm red"><div class="corner tl"><span class="rank">A</span><span class="suit">♦</span></div><div class="pip">♦</div></div>
+            <div class="card-3d card-sm"><div class="corner tl"><span class="rank">7</span><span class="suit">♣</span></div><div class="pip">♣</div></div>
+            <div class="card-3d card-sm"><div class="corner tl"><span class="rank">2</span><span class="suit">♠</span></div><div class="pip">♠</div></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-display" style="font-size:32px;margin:0 0 12px">Top par, kicker rey. Bot seco.</h3>
+          <p style="color:var(--text-mute);margin:0;font-size:15px;line-height:1.6">El rival hace check. Apuestas <b style="color:var(--text)">60% del bote</b> para extraer valor de manos peores (Ax débiles, pares medios). Iguala.</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:240px 1fr;gap:32px;margin-bottom:32px;align-items:center;border-bottom:1px solid var(--line-soft);padding-bottom:32px">
+        <div>
+          <div class="font-mono" style="font-size:10px;color:var(--gold);letter-spacing:.2em">TURN</div>
+          <div class="font-display" style="font-size:42px;margin-top:8px">+ Q♥</div>
+          <div style="display:flex;gap:8px;margin-top:16px">
+            <div class="card-3d card-sm red"><div class="pip">♦</div></div>
+            <div class="card-3d card-sm"><div class="pip">♣</div></div>
+            <div class="card-3d card-sm"><div class="pip">♠</div></div>
+            <div class="card-3d card-sm red"><div class="corner tl"><span class="rank">Q</span><span class="suit">♥</span></div><div class="pip">♥</div></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-display" style="font-size:32px;margin:0 0 12px">Carta peligrosa, pero sigues fuerte.</h3>
+          <p style="color:var(--text-mute);margin:0;font-size:15px;line-height:1.6">Aparece Q♥ — puede haber pegado a un rival que floteó con KQ o QJs. Apuestas algo más pequeño (40%) para controlar el bote y proteger contra proyectos.</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:240px 1fr;gap:32px;align-items:center">
+        <div>
+          <div class="font-mono" style="font-size:10px;color:var(--gold);letter-spacing:.2em">RIVER · SHOWDOWN</div>
+          <div class="font-display" style="font-size:42px;margin-top:8px">+ 9♦</div>
+          <div style="display:flex;gap:6px;margin-top:16px;flex-wrap:wrap">
+            <div class="card-3d card-xs red"><div class="pip">A</div></div>
+            <div class="card-3d card-xs"><div class="pip">7</div></div>
+            <div class="card-3d card-xs"><div class="pip">2</div></div>
+            <div class="card-3d card-xs red"><div class="pip">Q</div></div>
+            <div class="card-3d card-xs red"><div class="pip">9</div></div>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-display" style="font-size:32px;margin:0 0 12px">Ganas el bote con par de ases, kicker rey.</h3>
+          <p style="color:var(--text-mute);margin:0;font-size:15px;line-height:1.6">El rival muestra A♣Q♠ — doble pareja sí, pero peor: tu kicker rey desempata. <b style="color:var(--gold)">Has ganado +18.5bb</b>. La AI registra la mano para futuros análisis.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="panel reveal" style="margin-top:32px;padding:40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+      <div>
+        <h3 class="font-display" style="font-size:32px;margin:0 0 8px">¿Listo para una mano real?</h3>
+        <p style="color:var(--text-mute);margin:0;font-size:15px">Practica sin dinero contra la CPU. Después, deja que la AI explique tus jugadas.</p>
+      </div>
+      <div style="display:flex;gap:10px">
+        <a class="btn btn-ghost" href="ranking.html">Ver dónde jugar</a>
+        <a class="btn btn-primary" href="practicar.html">Abrir simulador →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (shared) -->
+<footer>
+  <div class="container">
+    <div class="responsible reveal">
+      <div class="ico">⚠</div>
+      <div class="body">
+        <h4>Juego responsable</h4>
+        <p>El contenido de Solver es informativo y educativo. Si decides jugar con dinero real, hazlo de forma consciente y dentro de tus límites. +18.</p>
+      </div>
+    </div>
+
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="brand" style="margin-bottom:16px">
+          <div class="brand-mark"></div>
+          <div><b>Solver</b><small style="display:block;margin-top:-2px">Poker · AI</small></div>
+        </div>
+        <p style="color:var(--text-mute);font-size:13px;max-width:300px;margin:0">Una plataforma para aprender, practicar y mejorar en el póker apoyada en análisis y AI.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Plataforma</h5>
+        <a href="aprende.html">Aprende</a>
+        <a href="practicar.html">Practicar</a>
+        <a href="asistente.html">Asistente AI</a>
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+      <div class="foot-col">
+        <h5>Recursos</h5>
+        <a href="ranking.html">Ranking de salas</a>
+        <a href="aprende.html#manos">Valor de manos</a>
+        <a href="aprende.html#fases">Fases</a>
+        <a href="aprende.html#terminos">Glosario</a>
+      </div>
+      <div class="foot-col">
+        <h5>Legal</h5>
+        <a href="terminos.html">Términos</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="juego-responsable.html">Juego responsable</a>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 Solver Poker.</span>
+      <span>+18 · Juega con responsabilidad</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/src/shared/ui.js"></script>
+</body>
+</html>

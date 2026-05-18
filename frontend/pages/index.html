@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Solver — Estrategia de póker con inteligencia artificial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="/assets/styles/styles.css" />
+</head>
+<body data-screen-label="01 Home">
+
+<!-- ============================================================ NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" style="text-decoration:none;color:inherit">
+      <div class="brand-mark"></div>
+      <div>
+        <b>Solver</b>
+        <small style="display:block;margin-top:-2px">Poker · AI</small>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a data-nav-link href="index.html">Inicio</a>
+      <a data-nav-link href="aprende.html">Aprende</a>
+      <a data-nav-link href="ranking.html">Ranking</a>
+      <a data-nav-link href="practicar.html">Practicar</a>
+      <a data-nav-link href="asistente.html">Asistente AI</a>
+      <a data-nav-link href="dashboard.html">Dashboard</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="practicar.html">Jugar demo</a>
+      <a class="btn btn-primary btn-sm" href="asistente.html">Probar AI →</a>
+      <button class="burger" data-burger aria-label="Menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="drawer" data-drawer>
+    <a data-nav-link href="index.html">Inicio</a>
+    <a data-nav-link href="aprende.html">Aprende</a>
+    <a data-nav-link href="ranking.html">Ranking</a>
+    <a data-nav-link href="practicar.html">Practicar</a>
+    <a data-nav-link href="asistente.html">Asistente AI</a>
+    <a data-nav-link href="dashboard.html">Dashboard</a>
+  </div>
+</nav>
+
+<!-- ============================================================ HERO -->
+<section class="hero" data-screen-label="hero">
+  <div class="hero-bg"></div>
+
+  <!-- Ambient floating cards -->
+  <div class="hero-orbit">
+    <div class="ambient-card" style="top:18%; left:6%; --rot:-12deg; animation-delay:-3s">
+      <div class="card-3d back" style="width:54px;height:76px"></div>
+    </div>
+    <div class="ambient-card" style="top:72%; left:4%; --rot:14deg; animation-delay:-9s">
+      <div class="card-3d card-sm red"><div class="corner tl"><span class="rank">A</span><span class="suit">♥</span></div><div class="pip">♥</div><div class="corner br"><span class="rank">A</span><span class="suit">♥</span></div></div>
+    </div>
+    <div class="ambient-card" style="top:22%; right:8%; --rot:18deg; animation-delay:-6s">
+      <div class="card-3d back" style="width:50px;height:70px"></div>
+    </div>
+    <div class="ambient-card" style="top:78%; right:10%; --rot:-8deg; animation-delay:-2s">
+      <div class="card-3d card-sm"><div class="corner tl"><span class="rank">K</span><span class="suit">♠</span></div><div class="pip">♠</div><div class="corner br"><span class="rank">K</span><span class="suit">♠</span></div></div>
+    </div>
+  </div>
+
+  <div class="container hero-inner">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Plataforma de estrategia · v2.0</div>
+
+      <h1>
+        Domina el póker<br />
+        con <em>estrategia</em>,<br />
+        práctica e <em>inteligencia</em>.
+      </h1>
+
+      <p class="lead">
+        Aprende las reglas, practica contra una CPU entrenada con miles de manos,
+        y recibe recomendaciones en tiempo real de un asistente AI mientras juegas.
+        Solver convierte la intuición en datos.
+      </p>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href="asistente.html">
+          Probar asistente AI
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-ghost btn-lg" href="aprende.html">Aprender a jugar</a>
+        <a class="btn btn-ghost btn-lg" href="trailer.html">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Ver trailer
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="num">12.4M</div>
+          <div class="lbl">Manos analizadas</div>
+        </div>
+        <div class="stat">
+          <div class="num">94.2%</div>
+          <div class="lbl">Precisión GTO</div>
+        </div>
+        <div class="stat">
+          <div class="num">&lt;120ms</div>
+          <div class="lbl">Tiempo de respuesta</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero stage: felt + cards + chips + HUD -->
+    <div class="hero-stage">
+      <div class="hero-felt"></div>
+
+      <!-- HUD floating chip top-left -->
+      <div class="hud-chip" style="top:6%; left:-8%; transform: rotate(-4deg)">
+        <div class="hud-label">Probabilidad de ganar</div>
+        <div class="hud-value" style="color: var(--gold)">72.4<span style="font-size:18px;color:var(--text-mute)">%</span></div>
+        <div class="hud-sub">Equity vs. 2 rivales</div>
+        <div class="hud-bar"><div style="width:72%"></div></div>
+      </div>
+
+      <!-- HUD floating chip bottom-right -->
+      <div class="hud-chip" style="bottom:8%; right:-10%; transform: rotate(3deg)">
+        <div class="hud-label">Recomendación AI</div>
+        <div class="hud-value" style="background:linear-gradient(180deg,var(--ai),var(--ai-deep));-webkit-background-clip:text;background-clip:text;color:transparent">Raise</div>
+        <div class="hud-sub">+ 60% del bote · EV +14.2bb</div>
+      </div>
+
+      <!-- Cards in hand -->
+      <div class="hero-cards">
+        <div class="hero-card-anim" style="animation-delay:.1s">
+          <div class="card-3d red" style="transform:rotate(-6deg)">
+            <div class="corner tl"><span class="rank">A</span><span class="suit">♥</span></div>
+            <div class="pip">♥</div>
+            <div class="corner br"><span class="rank">A</span><span class="suit">♥</span></div>
+          </div>
+        </div>
+        <div class="hero-card-anim" style="animation-delay:.25s">
+          <div class="card-3d" style="transform:rotate(6deg)">
+            <div class="corner tl"><span class="rank">A</span><span class="suit">♠</span></div>
+            <div class="pip">♠</div>
+            <div class="corner br"><span class="rank">A</span><span class="suit">♠</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chips stacks -->
+      <div class="hero-chips">
+        <div class="chip-tower">
+          <div class="chip chip-red" style="bottom:0"><span>25</span></div>
+          <div class="chip chip-red" style="bottom:8px"><span>25</span></div>
+          <div class="chip chip-red" style="bottom:16px"><span>25</span></div>
+          <div class="chip chip-red" style="bottom:24px"><span>25</span></div>
+        </div>
+        <div class="chip-tower">
+          <div class="chip chip-blue" style="bottom:0"><span>100</span></div>
+          <div class="chip chip-blue" style="bottom:8px"><span>100</span></div>
+          <div class="chip chip-blue" style="bottom:16px"><span>100</span></div>
+          <div class="chip chip-blue" style="bottom:24px"><span>100</span></div>
+          <div class="chip chip-blue" style="bottom:32px"><span>100</span></div>
+        </div>
+        <div class="chip-tower">
+          <div class="chip chip-gold" style="bottom:0"><span>500</span></div>
+          <div class="chip chip-gold" style="bottom:8px"><span>500</span></div>
+          <div class="chip chip-gold" style="bottom:16px"><span>500</span></div>
+        </div>
+        <div class="chip-tower">
+          <div class="chip chip-black" style="bottom:0"><span>1K</span></div>
+          <div class="chip chip-black" style="bottom:8px"><span>1K</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:5;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--text-dim);text-transform:uppercase">
+    <div style="margin-bottom:8px">Desliza</div>
+    <div style="width:1px;height:36px;background:linear-gradient(180deg,var(--gold),transparent);margin:0 auto"></div>
+  </div>
+</section>
+
+<!-- ============================================================ SCROLL TRAILER -->
+<div id="trailer-embed-root"></div>
+
+<!-- ============================================================ FEATURE GRID -->
+<section data-screen-label="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot"></span>Todo lo que necesitas, en un solo lugar</div>
+      <h2 class="font-display">Una plataforma. Cinco superpoderes.</h2>
+      <p>Aprende, practica, decide. Solver junta material educativo, simulación y un asistente AI en una experiencia coherente, sin distracciones.</p>
+    </div>
+
+    <div class="learn-grid">
+
+      <!-- Feature: Aprende -->
+      <a class="panel learn-card reveal" href="aprende.html" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;padding:32px;min-height:340px;justify-content:space-between">
+        <div>
+          <div class="pill pill-gold">01 · Educación</div>
+          <h3 style="font-size:36px;margin:20px 0 12px">Aprende cómo se juega.</h3>
+          <p style="font-size:15px;max-width:380px">Reglas, valor de manos, fases de la partida y los términos clave (bet, call, raise, fold, check, all-in) explicados sin tecnicismos.</p>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:24px">
+          <div style="display:flex;gap:6px">
+            <div class="card-3d card-sm red" style="transform:rotate(-8deg)"><div class="corner tl"><span class="rank">A</span><span class="suit">♥</span></div><div class="pip">♥</div></div>
+            <div class="card-3d card-sm" style="transform:rotate(-2deg)"><div class="corner tl"><span class="rank">K</span><span class="suit">♠</span></div><div class="pip">♠</div></div>
+            <div class="card-3d card-sm red" style="transform:rotate(4deg)"><div class="corner tl"><span class="rank">Q</span><span class="suit">♦</span></div><div class="pip">♦</div></div>
+            <div class="card-3d card-sm" style="transform:rotate(10deg)"><div class="corner tl"><span class="rank">J</span><span class="suit">♣</span></div><div class="pip">♣</div></div>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.1em">IR →</span>
+        </div>
+      </a>
+
+      <!-- Feature: Ranking -->
+      <a class="panel learn-card reveal" href="ranking.html" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;padding:32px;min-height:340px;justify-content:space-between">
+        <div>
+          <div class="pill pill-gold">02 · Ranking</div>
+          <h3 style="font-size:36px;margin:20px 0 12px">Las mejores salas online.</h3>
+          <p style="font-size:15px;max-width:380px">Comparativa curada por nivel, seguridad, experiencia y tipo de mesas. Encuentra dónde jugar según tu perfil.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:24px">
+          <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:80px">Seguridad</span><div class="b"><div style="width:96%"></div></div><span class="n">9.6</span></div>
+          <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:80px">UX</span><div class="b"><div style="width:88%"></div></div><span class="n">8.8</span></div>
+          <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:80px">Tráfico</span><div class="b"><div style="width:74%"></div></div><span class="n">7.4</span></div>
+        </div>
+      </a>
+
+      <!-- Feature: Practicar (wide) -->
+      <a class="panel learn-card wide reveal" href="practicar.html" style="text-decoration:none;color:inherit;display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:0;min-height:380px;overflow:hidden">
+        <div style="padding:40px;display:flex;flex-direction:column;justify-content:center">
+          <div class="pill pill-gold">03 · Simulador</div>
+          <h3 style="font-size:44px;margin:20px 0 12px;font-family:Cormorant,serif">Practica contra el ordenador.</h3>
+          <p style="font-size:15px;max-width:420px">Mesa heads-up con CPU adaptativa. Después de cada mano recibes feedback explicando qué jugada habría sido óptima — y por qué.</p>
+          <div style="margin-top:24px;display:flex;gap:10px">
+            <span class="pill">Heads-up</span>
+            <span class="pill">No Limit Hold'em</span>
+            <span class="pill pill-ai">Feedback AI</span>
+          </div>
+        </div>
+        <div style="position:relative;background:radial-gradient(ellipse at 50% 50%, var(--felt) 0%, var(--felt-deep) 70%, var(--felt-edge) 100%);overflow:hidden">
+          <!-- Mini table -->
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:14px">
+            <div style="display:flex;gap:6px;opacity:0.6">
+              <div class="card-3d back card-sm"></div>
+              <div class="card-3d back card-sm"></div>
+            </div>
+            <div style="display:flex;gap:6px">
+              <div class="card-3d card-sm red"><div class="corner tl"><span class="rank">10</span><span class="suit">♥</span></div><div class="pip">♥</div></div>
+              <div class="card-3d card-sm"><div class="corner tl"><span class="rank">J</span><span class="suit">♠</span></div><div class="pip">♠</div></div>
+              <div class="card-3d card-sm"><div class="corner tl"><span class="rank">Q</span><span class="suit">♣</span></div><div class="pip">♣</div></div>
+              <div class="card-3d card-sm back"></div>
+              <div class="card-3d card-sm back"></div>
+            </div>
+            <div class="pot">POT <span class="pot-amount">2 480</span></div>
+            <div style="display:flex;gap:6px;margin-top:6px">
+              <div class="card-3d card-sm red"><div class="corner tl"><span class="rank">K</span><span class="suit">♦</span></div><div class="pip">♦</div></div>
+              <div class="card-3d card-sm red"><div class="corner tl"><span class="rank">A</span><span class="suit">♥</span></div><div class="pip">♥</div></div>
+            </div>
+          </div>
+          <div style="position:absolute;top:18px;right:20px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);letter-spacing:.2em">DEMO TABLE →</div>
+        </div>
+      </a>
+
+      <!-- Feature: AI assistant -->
+      <a class="panel learn-card reveal" href="asistente.html" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;padding:32px;min-height:340px;justify-content:space-between;border-color:oklch(0.82 0.14 200 / 0.3);background:radial-gradient(ellipse at top right, oklch(0.55 0.13 220 / 0.12), transparent 60%), linear-gradient(180deg, var(--bg-2), var(--bg-1))">
+        <div>
+          <div class="pill pill-ai">04 · Asistente AI</div>
+          <h3 style="font-size:36px;margin:20px 0 12px">Decide con datos, no con corazonadas.</h3>
+          <p style="font-size:15px;max-width:380px">Introduce tu mano, las cartas comunitarias y el contexto. Recibe en segundos una recomendación, su justificación y el riesgo.</p>
+        </div>
+        <div class="ai-action-display" style="font-size:56px;margin-top:24px">Raise <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--gold);letter-spacing:.1em;vertical-align:middle">60% POT</span></div>
+      </a>
+
+      <!-- Feature: Dashboard -->
+      <a class="panel learn-card reveal" href="dashboard.html" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;padding:32px;min-height:340px;justify-content:space-between">
+        <div>
+          <div class="pill pill-gold">05 · Analítica</div>
+          <h3 style="font-size:36px;margin:20px 0 12px">Ve tu juego en cifras.</h3>
+          <p style="font-size:15px;max-width:380px">Estadísticas de tus decisiones, comparativa con la recomendación AI, agresividad, EV acumulado y errores recurrentes.</p>
+        </div>
+        <!-- Mini sparkline -->
+        <svg viewBox="0 0 300 80" style="margin-top:24px;width:100%;height:80px">
+          <defs>
+            <linearGradient id="gh" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="oklch(0.82 0.14 82)" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="oklch(0.82 0.14 82)" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0 60 L30 50 L60 55 L90 38 L120 42 L150 28 L180 32 L210 18 L240 22 L270 10 L300 14 L300 80 L0 80 Z" fill="url(#gh)"/>
+          <path d="M0 60 L30 50 L60 55 L90 38 L120 42 L150 28 L180 32 L210 18 L240 22 L270 10 L300 14" fill="none" stroke="oklch(0.82 0.14 82)" stroke-width="2"/>
+          <circle cx="300" cy="14" r="4" fill="oklch(0.82 0.14 82)"/>
+        </svg>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ HOW IT WORKS -->
+<section data-screen-label="how it works" style="background:linear-gradient(180deg,var(--bg-0),var(--bg-1) 50%,var(--bg-0))">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot"></span>Cómo funciona</div>
+      <h2 class="font-display">De la teoría a la mesa, en tres movimientos.</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px" class="reveal">
+
+      <div class="panel panel-pad" style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span class="font-display" style="font-size:64px;color:var(--gold);font-style:italic;line-height:1">01</span>
+          <span class="font-mono" style="font-size:10px;color:var(--text-dim);letter-spacing:.2em">APRENDE</span>
+        </div>
+        <h3 style="font-family:Cormorant,serif;font-size:28px;font-weight:500;margin:0">Empieza por las reglas.</h3>
+        <p style="color:var(--text-mute);margin:0;font-size:14px">Lecciones cortas con ejemplos visuales: manos, fases, posiciones y los términos que vas a oír en la mesa.</p>
+        <a href="aprende.html" style="margin-top:auto;color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;text-decoration:none">Ir a la guía →</a>
+      </div>
+
+      <div class="panel panel-pad" style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span class="font-display" style="font-size:64px;color:var(--gold);font-style:italic;line-height:1">02</span>
+          <span class="font-mono" style="font-size:10px;color:var(--text-dim);letter-spacing:.2em">PRACTICA</span>
+        </div>
+        <h3 style="font-family:Cormorant,serif;font-size:28px;font-weight:500;margin:0">Juega contra la CPU.</h3>
+        <p style="color:var(--text-mute);margin:0;font-size:14px">Una mesa heads-up con bote, fichas y turnos reales. Sin dinero. Después de cada decisión, feedback inmediato.</p>
+        <a href="practicar.html" style="margin-top:auto;color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;text-decoration:none">Abrir simulador →</a>
+      </div>
+
+      <div class="panel panel-pad" style="display:flex;flex-direction:column;gap:16px;border-color:oklch(0.82 0.14 200 / 0.3)">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span class="font-display" style="font-size:64px;color:var(--ai);font-style:italic;line-height:1">03</span>
+          <span class="font-mono" style="font-size:10px;color:var(--ai);letter-spacing:.2em">DECIDE</span>
+        </div>
+        <h3 style="font-family:Cormorant,serif;font-size:28px;font-weight:500;margin:0">Consulta a la AI en vivo.</h3>
+        <p style="color:var(--text-mute);margin:0;font-size:14px">Estás en una mesa real. Introduce las cartas y el contexto, y la AI te dice qué acción tiene mayor EV — y por qué.</p>
+        <a href="asistente.html" style="margin-top:auto;color:var(--ai);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;text-decoration:none">Abrir asistente →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ CTA STRIP -->
+<section style="padding:80px 0">
+  <div class="container">
+    <div class="panel reveal" style="padding:60px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;border-color:oklch(0.78 0.13 82 / 0.3);background:radial-gradient(ellipse at top right,oklch(0.78 0.13 82 / 0.12),transparent 60%),linear-gradient(180deg,var(--bg-2),var(--bg-1))">
+      <div>
+        <h2 class="font-display" style="font-size:52px;margin:0 0 16px">¿Listo para sentarte a la mesa?</h2>
+        <p style="color:var(--text-mute);font-size:17px;margin:0;max-width:520px">Abre el simulador, prueba el asistente AI o lee la guía. Lo que tú elijas — el banco de manos te está esperando.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a class="btn btn-primary btn-lg" href="practicar.html">Empezar a practicar →</a>
+        <a class="btn btn-ghost btn-lg" href="asistente.html">Probar el asistente AI</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ FOOTER -->
+<footer>
+  <div class="container">
+    <div class="responsible reveal">
+      <div class="ico">⚠</div>
+      <div class="body">
+        <h4>Juego responsable</h4>
+        <p>El contenido de Solver es informativo y educativo. Si decides jugar con dinero real, hazlo de forma consciente y dentro de tus límites. Si crees que el juego se está convirtiendo en un problema, busca ayuda profesional. +18.</p>
+      </div>
+    </div>
+
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="brand" style="margin-bottom:16px">
+          <div class="brand-mark"></div>
+          <div><b>Solver</b><small style="display:block;margin-top:-2px">Poker · AI</small></div>
+        </div>
+        <p style="color:var(--text-mute);font-size:13px;max-width:300px;margin:0">Una plataforma para aprender, practicar y mejorar en el póker apoyada en análisis y AI. Estrategia, no suerte.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Plataforma</h5>
+        <a href="aprende.html">Aprende a jugar</a>
+        <a href="practicar.html">Practicar</a>
+        <a href="asistente.html">Asistente AI</a>
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+      <div class="foot-col">
+        <h5>Recursos</h5>
+        <a href="ranking.html">Ranking de salas</a>
+        <a href="aprende.html#manos">Valor de manos</a>
+        <a href="aprende.html#fases">Fases de la partida</a>
+        <a href="aprende.html#terminos">Glosario</a>
+      </div>
+      <div class="foot-col">
+        <h5>Legal</h5>
+        <a href="terminos.html">Términos</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="juego-responsable.html">Juego responsable</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 Solver Poker. Todos los derechos reservados.</span>
+      <span>+18 · Juega con responsabilidad</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="/src/apps/trailer/animations.jsx"></script>
+<script type="text/babel" src="/src/apps/trailer/trailer-scenes.jsx"></script>
+<script type="text/babel" src="/src/apps/trailer/trailer-embed.jsx"></script>
+
+<script src="/src/shared/ui.js"></script>
+</body>
+</html>

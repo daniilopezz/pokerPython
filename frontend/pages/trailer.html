@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trailer cinemático — Solver Poker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="/assets/styles/styles.css" />
+  <style>
+    html, body { height: 100%; }
+    body { background: oklch(0.06 0.01 60); overflow: hidden; }
+    .trailer-host {
+      position: fixed; inset: 0;
+      display: flex;
+    }
+    .trailer-host #trailer-root {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+    }
+    .trailer-overlay-nav {
+      position: fixed; top: 24px; left: 24px;
+      z-index: 1000; display: flex; align-items: center; gap: 14px;
+      padding: 10px 14px;
+      background: oklch(0 0 0 / 0.55);
+      backdrop-filter: blur(16px);
+      border: 1px solid oklch(0.28 0.01 60);
+      border-radius: 999px;
+      color: oklch(0.96 0.008 80);
+      text-decoration: none;
+      font-family: "Manrope", sans-serif;
+      font-size: 13px;
+    }
+    .trailer-overlay-nav:hover { background: oklch(0 0 0 / 0.75); }
+    .trailer-overlay-nav .brand-mark { width: 22px; height: 22px; border-radius: 6px; }
+    .trailer-overlay-nav .brand-mark::after { font-size: 14px; }
+    .trailer-controls {
+      position: fixed; top: 24px; right: 24px; z-index: 1000;
+      display: flex; gap: 8px; align-items: center;
+      padding: 8px;
+      background: oklch(0 0 0 / 0.55);
+      backdrop-filter: blur(16px);
+      border: 1px solid oklch(0.28 0.01 60);
+      border-radius: 999px;
+    }
+    .trailer-controls a, .trailer-controls span {
+      padding: 6px 12px; border-radius: 999px;
+      color: oklch(0.74 0.012 80); text-decoration: none;
+      font-family: "JetBrains Mono", monospace; font-size: 11px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .trailer-controls a:hover { color: oklch(0.96 0.008 80); background: oklch(1 0 0 / 0.05); }
+    .trailer-controls .key { background: oklch(1 0 0 / 0.04); }
+  </style>
+</head>
+<body data-screen-label="07 Trailer">
+
+<!-- Overlay nav -->
+<a href="index.html" class="trailer-overlay-nav">
+  <div class="brand-mark"></div>
+  <span style="font-family: Cormorant, serif; font-size: 18px; letter-spacing: 0.05em;">Solver</span>
+  <span style="color: oklch(0.55 0.012 80); font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em;">VOLVER</span>
+</a>
+
+<div class="trailer-controls">
+  <span class="key">SPACE · play</span>
+  <span class="key">← →   · seek</span>
+  <a href="practicar.html">Probar →</a>
+</div>
+
+<div class="trailer-host">
+  <div id="trailer-root"></div>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="/src/apps/trailer/animations.jsx"></script>
+<script type="text/babel" src="/src/apps/trailer/trailer-scenes.jsx"></script>
+
+</body>
+</html>

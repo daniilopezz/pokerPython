@@ -1,0 +1,17 @@
+{
+  "name": "solver-poker",
+  "version": "1.0.0",
+  "description": "Solver Poker frontend and backend API.",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "check": "node --check backend/server.js && node --check backend/app.js && node --check shared/poker/engine.js && node --check shared/poker/strategy.js",
+    "dev": "node backend/server.js",
+    "start": "node backend/server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

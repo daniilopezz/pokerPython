@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ranking de salas — Solver Poker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="/assets/styles/styles.css" />
+</head>
+<body data-screen-label="03 Ranking">
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html" style="text-decoration:none;color:inherit">
+      <div class="brand-mark"></div>
+      <div><b>Solver</b><small style="display:block;margin-top:-2px">Poker · AI</small></div>
+    </a>
+    <div class="nav-links">
+      <a data-nav-link href="index.html">Inicio</a>
+      <a data-nav-link href="aprende.html">Aprende</a>
+      <a data-nav-link href="ranking.html">Ranking</a>
+      <a data-nav-link href="practicar.html">Practicar</a>
+      <a data-nav-link href="asistente.html">Asistente AI</a>
+      <a data-nav-link href="dashboard.html">Dashboard</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="practicar.html">Jugar demo</a>
+      <a class="btn btn-primary btn-sm" href="asistente.html">Probar AI →</a>
+      <button class="burger" data-burger aria-label="Menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="drawer" data-drawer>
+    <a data-nav-link href="index.html">Inicio</a>
+    <a data-nav-link href="aprende.html">Aprende</a>
+    <a data-nav-link href="ranking.html">Ranking</a>
+    <a data-nav-link href="practicar.html">Practicar</a>
+    <a data-nav-link href="asistente.html">Asistente AI</a>
+    <a data-nav-link href="dashboard.html">Dashboard</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<section style="padding:160px 0 60px;position:relative;overflow:hidden">
+  <div class="hero-bg" style="opacity:0.5"></div>
+  <div class="container" style="position:relative;z-index:2">
+    <div class="eyebrow reveal"><span class="dot"></span>Comparativa · Edición 2026</div>
+    <h1 class="font-display reveal" style="font-size:clamp(48px,7vw,96px);margin:18px 0 24px;max-width:1000px">
+      Las mejores salas para jugar al<br/>
+      póker <em style="background:linear-gradient(180deg,var(--gold),var(--gold-deep));-webkit-background-clip:text;background-clip:text;color:transparent">online</em>.
+    </h1>
+    <p class="reveal" style="color:var(--text-mute);max-width:680px;font-size:18px;margin:0">
+      Curamos un ranking según cuatro criterios: seguridad y licencias, experiencia de usuario, tráfico (cuánta gente juega) y dureza del campo. Empieza por el podio.
+    </p>
+
+    <!-- Filters -->
+    <div class="reveal" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:36px">
+      <span class="pill pill-gold">Todas</span>
+      <span class="pill">Principiantes</span>
+      <span class="pill">Cash games</span>
+      <span class="pill">Torneos</span>
+      <span class="pill">Bajo límite</span>
+      <span class="pill">High stakes</span>
+      <span class="pill">Móvil</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PODIUM (top 3) ============ -->
+<section style="padding:60px 0">
+  <div class="container">
+    <div class="rank-grid">
+
+      <!-- #1 featured -->
+      <div class="panel rank-card featured reveal">
+        <div class="rank-head">
+          <div>
+            <div class="rank-tag">RANK 01 · MEJOR EXPERIENCIA PREMIUM</div>
+            <div class="rank-name">Ace Royale</div>
+          </div>
+          <div class="rank-no">01</div>
+        </div>
+        <p style="color:var(--text-mute);font-size:13px;margin:0;line-height:1.6">
+          Mesa elegante, animaciones limpias y un cliente de escritorio reposado. Pensado para jugadores serios que valoran la interfaz por encima del marketing.
+        </p>
+        <ul class="rank-list">
+          <li>Licencia internacional verificada</li>
+          <li>Software premium con HUD propio</li>
+          <li>Cash games NL2 → NL2000</li>
+          <li>Torneos diarios garantizados</li>
+        </ul>
+        <div class="rank-meta">
+          <div class="m">
+            <span class="lbl">Nivel recomendado</span>
+            <span class="val">Intermedio · Avanzado</span>
+          </div>
+          <div class="m">
+            <span class="lbl">Tipo de jugadores</span>
+            <span class="val">Regulars</span>
+          </div>
+          <div class="m" style="grid-column:span 2">
+            <span class="lbl">Métricas</span>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
+              <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:90px">Seguridad</span><div class="b"><div style="width:96%"></div></div><span class="n">9.6</span></div>
+              <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:90px">UX</span><div class="b"><div style="width:94%"></div></div><span class="n">9.4</span></div>
+              <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:90px">Tráfico</span><div class="b"><div style="width:82%"></div></div><span class="n">8.2</span></div>
+              <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:90px">Dureza</span><div class="b"><div style="width:78%"></div></div><span class="n">7.8</span></div>
+            </div>
+          </div>
+        </div>
+        <span class="pill pill-gold">Mejor experiencia premium</span>
+      </div>
+
+      <!-- #2 -->
+      <div class="panel rank-card reveal">
+        <div class="rank-head">
+          <div>
+            <div class="rank-tag">RANK 02 · MAYOR TRÁFICO</div>
+            <div class="rank-name">Velvet Club</div>
+          </div>
+          <div class="rank-no">02</div>
+        </div>
+        <p style="color:var(--text-mute);font-size:13px;margin:0;line-height:1.6">
+          Una de las salas con más jugadores activos a cualquier hora. Mesas siempre llenas y rake competitivo en límites bajos y medios.
+        </p>
+        <ul class="rank-list">
+          <li>Mesas 24/7 a NL10 → NL400</li>
+          <li>Variedad: Hold'em, Omaha, Stud</li>
+          <li>Recompensas por volumen</li>
+          <li>Cliente móvil pulido</li>
+        </ul>
+        <div class="rank-meta">
+          <div class="m">
+            <span class="lbl">Nivel</span>
+            <span class="val">Todos</span>
+          </div>
+          <div class="m">
+            <span class="lbl">Jugadores</span>
+            <span class="val">Mixto</span>
+          </div>
+          <div class="m" style="grid-column:span 2">
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
+              <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:90px">Seguridad</span><div class="b"><div style="width:90%"></div></div><span class="n">9.0</span></div>
+              <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:90px">UX</span><div class="b"><div style="width:86%"></div></div><span class="n">8.6</span></div>
+              <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:90px">Tráfico</span><div class="b"><div style="width:96%"></div></div><span class="n">9.6</span></div>
+              <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:90px">Dureza</span><div class="b"><div style="width:68%"></div></div><span class="n">6.8</span></div>
+            </div>
+          </div>
+        </div>
+        <span class="pill">Mayor variedad de mesas</span>
+      </div>
+
+      <!-- #3 -->
+      <div class="panel rank-card reveal">
+        <div class="rank-head">
+          <div>
+            <div class="rank-tag">RANK 03 · MEJOR PARA PRINCIPIANTES</div>
+            <div class="rank-name">Riverstone</div>
+          </div>
+          <div class="rank-no">03</div>
+        </div>
+        <p style="color:var(--text-mute);font-size:13px;margin:0;line-height:1.6">
+          Campo blando, mesas didácticas con consejos integrados y micro-stakes a partir de centavos. La rampa de entrada más amable del mercado.
+        </p>
+        <ul class="rank-list">
+          <li>Mesas guiadas para nuevos</li>
+          <li>NL2 → NL100, ideal para entrenar</li>
+          <li>Bote dividido en torneos pequeños</li>
+          <li>Sin descarga obligatoria</li>
+        </ul>
+        <div class="rank-meta">
+          <div class="m">
+            <span class="lbl">Nivel</span>
+            <span class="val">Principiante</span>
+          </div>
+          <div class="m">
+            <span class="lbl">Jugadores</span>
+            <span class="val">Recreativos</span>
+          </div>
+          <div class="m" style="grid-column:span 2">
+            <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
+              <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:90px">Seguridad</span><div class="b"><div style="width:88%"></div></div><span class="n">8.8</span></div>
+              <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:90px">UX</span><div class="b"><div style="width:92%"></div></div><span class="n">9.2</span></div>
+              <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:90px">Tráfico</span><div class="b"><div style="width:74%"></div></div><span class="n">7.4</span></div>
+              <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:90px">Dureza</span><div class="b"><div style="width:42%"></div></div><span class="n">4.2</span></div>
+            </div>
+          </div>
+        </div>
+        <span class="pill">Mejor para principiantes</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE — full ranking ============ -->
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Ranking completo</div>
+      <h2 class="font-display">10 salas analizadas. Comparativa rápida.</h2>
+      <p>Misma información en formato compacto para escanear de un vistazo.</p>
+    </div>
+
+    <div class="panel reveal" style="padding:8px;overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:780px">
+        <thead>
+          <tr style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dim);text-align:left">
+            <th style="padding:14px 16px;border-bottom:1px solid var(--line)">#</th>
+            <th style="padding:14px 16px;border-bottom:1px solid var(--line)">Sala</th>
+            <th style="padding:14px 16px;border-bottom:1px solid var(--line)">Nivel</th>
+            <th style="padding:14px 16px;border-bottom:1px solid var(--line)">Ventaja</th>
+            <th style="padding:14px 16px;border-bottom:1px solid var(--line);text-align:right">Seguridad</th>
+            <th style="padding:14px 16px;border-bottom:1px solid var(--line);text-align:right">UX</th>
+            <th style="padding:14px 16px;border-bottom:1px solid var(--line);text-align:right">Tráfico</th>
+            <th style="padding:14px 16px;border-bottom:1px solid var(--line);text-align:right">Score</th>
+          </tr>
+        </thead>
+        <tbody style="font-family:'JetBrains Mono',monospace">
+          <tr style="border-bottom:1px solid var(--line-soft)">
+            <td style="padding:16px;color:var(--gold)">01</td>
+            <td style="padding:16px;font-family:Cormorant,serif;font-size:18px">Ace Royale</td>
+            <td style="padding:16px;color:var(--text-mute)">Intermedio</td>
+            <td style="padding:16px;color:var(--text)">Mejor experiencia premium</td>
+            <td style="padding:16px;text-align:right">9.6</td>
+            <td style="padding:16px;text-align:right">9.4</td>
+            <td style="padding:16px;text-align:right">8.2</td>
+            <td style="padding:16px;text-align:right;color:var(--gold);font-weight:600">9.3</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line-soft)">
+            <td style="padding:16px;color:var(--gold)">02</td>
+            <td style="padding:16px;font-family:Cormorant,serif;font-size:18px">Velvet Club</td>
+            <td style="padding:16px;color:var(--text-mute)">Todos</td>
+            <td style="padding:16px;color:var(--text)">Mayor variedad de mesas</td>
+            <td style="padding:16px;text-align:right">9.0</td>
+            <td style="padding:16px;text-align:right">8.6</td>
+            <td style="padding:16px;text-align:right">9.6</td>
+            <td style="padding:16px;text-align:right;color:var(--gold);font-weight:600">9.1</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line-soft)">
+            <td style="padding:16px;color:var(--gold)">03</td>
+            <td style="padding:16px;font-family:Cormorant,serif;font-size:18px">Riverstone</td>
+            <td style="padding:16px;color:var(--text-mute)">Principiante</td>
+            <td style="padding:16px;color:var(--text)">Mejor para principiantes</td>
+            <td style="padding:16px;text-align:right">8.8</td>
+            <td style="padding:16px;text-align:right">9.2</td>
+            <td style="padding:16px;text-align:right">7.4</td>
+            <td style="padding:16px;text-align:right;color:var(--gold);font-weight:600">8.6</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line-soft)">
+            <td style="padding:16px;color:var(--text-dim)">04</td>
+            <td style="padding:16px;font-family:Cormorant,serif;font-size:18px">Bridge Casino</td>
+            <td style="padding:16px;color:var(--text-mute)">Intermedio</td>
+            <td style="padding:16px;color:var(--text-mute)">Bono inicial agresivo</td>
+            <td style="padding:16px;text-align:right">8.4</td>
+            <td style="padding:16px;text-align:right">8.0</td>
+            <td style="padding:16px;text-align:right">8.6</td>
+            <td style="padding:16px;text-align:right">8.3</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line-soft)">
+            <td style="padding:16px;color:var(--text-dim)">05</td>
+            <td style="padding:16px;font-family:Cormorant,serif;font-size:18px">North Spades</td>
+            <td style="padding:16px;color:var(--text-mute)">Avanzado</td>
+            <td style="padding:16px;color:var(--text-mute)">High stakes pulidos</td>
+            <td style="padding:16px;text-align:right">9.2</td>
+            <td style="padding:16px;text-align:right">7.8</td>
+            <td style="padding:16px;text-align:right">7.0</td>
+            <td style="padding:16px;text-align:right">8.0</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line-soft)">
+            <td style="padding:16px;color:var(--text-dim)">06</td>
+            <td style="padding:16px;font-family:Cormorant,serif;font-size:18px">Lumen Tables</td>
+            <td style="padding:16px;color:var(--text-mute)">Todos</td>
+            <td style="padding:16px;color:var(--text-mute)">Mejor app móvil</td>
+            <td style="padding:16px;text-align:right">8.0</td>
+            <td style="padding:16px;text-align:right">9.0</td>
+            <td style="padding:16px;text-align:right">7.6</td>
+            <td style="padding:16px;text-align:right">8.0</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line-soft)">
+            <td style="padding:16px;color:var(--text-dim)">07</td>
+            <td style="padding:16px;font-family:Cormorant,serif;font-size:18px">Iberis Poker</td>
+            <td style="padding:16px;color:var(--text-mute)">Todos</td>
+            <td style="padding:16px;color:var(--text-mute)">Comunidad local</td>
+            <td style="padding:16px;text-align:right">8.4</td>
+            <td style="padding:16px;text-align:right">7.6</td>
+            <td style="padding:16px;text-align:right">8.0</td>
+            <td style="padding:16px;text-align:right">7.8</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line-soft)">
+            <td style="padding:16px;color:var(--text-dim)">08</td>
+            <td style="padding:16px;font-family:Cormorant,serif;font-size:18px">Onyx Cards</td>
+            <td style="padding:16px;color:var(--text-mute)">Avanzado</td>
+            <td style="padding:16px;color:var(--text-mute)">Más competitivo</td>
+            <td style="padding:16px;text-align:right">9.0</td>
+            <td style="padding:16px;text-align:right">7.4</td>
+            <td style="padding:16px;text-align:right">7.2</td>
+            <td style="padding:16px;text-align:right">7.7</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line-soft)">
+            <td style="padding:16px;color:var(--text-dim)">09</td>
+            <td style="padding:16px;font-family:Cormorant,serif;font-size:18px">Cinder Stakes</td>
+            <td style="padding:16px;color:var(--text-mute)">Intermedio</td>
+            <td style="padding:16px;color:var(--text-mute)">Torneos rápidos</td>
+            <td style="padding:16px;text-align:right">8.0</td>
+            <td style="padding:16px;text-align:right">7.6</td>
+            <td style="padding:16px;text-align:right">7.4</td>
+            <td style="padding:16px;text-align:right">7.6</td>
+          </tr>
+          <tr>
+            <td style="padding:16px;color:var(--text-dim)">10</td>
+            <td style="padding:16px;font-family:Cormorant,serif;font-size:18px">Pearl Lounge</td>
+            <td style="padding:16px;color:var(--text-mute)">Principiante</td>
+            <td style="padding:16px;color:var(--text-mute)">Entorno relajado</td>
+            <td style="padding:16px;text-align:right">7.8</td>
+            <td style="padding:16px;text-align:right">8.2</td>
+            <td style="padding:16px;text-align:right">6.4</td>
+            <td style="padding:16px;text-align:right">7.4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Methodology -->
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px">
+      <div class="panel panel-pad">
+        <div class="font-mono" style="font-size:10px;color:var(--text-dim);letter-spacing:.15em">CRITERIO 01</div>
+        <h4 style="font-family:Cormorant,serif;font-size:24px;margin:8px 0 8px;font-weight:500">Seguridad</h4>
+        <p style="font-size:12px;color:var(--text-mute);margin:0">Licencias, encriptación, separación de fondos y reputación pública.</p>
+      </div>
+      <div class="panel panel-pad">
+        <div class="font-mono" style="font-size:10px;color:var(--text-dim);letter-spacing:.15em">CRITERIO 02</div>
+        <h4 style="font-family:Cormorant,serif;font-size:24px;margin:8px 0 8px;font-weight:500">Experiencia</h4>
+        <p style="font-size:12px;color:var(--text-mute);margin:0">Calidad del cliente, fluidez, app móvil, soporte y onboarding.</p>
+      </div>
+      <div class="panel panel-pad">
+        <div class="font-mono" style="font-size:10px;color:var(--text-dim);letter-spacing:.15em">CRITERIO 03</div>
+        <h4 style="font-family:Cormorant,serif;font-size:24px;margin:8px 0 8px;font-weight:500">Tráfico</h4>
+        <p style="font-size:12px;color:var(--text-mute);margin:0">Volumen de mesas activas y horario amplio en distintos límites.</p>
+      </div>
+      <div class="panel panel-pad">
+        <div class="font-mono" style="font-size:10px;color:var(--text-dim);letter-spacing:.15em">CRITERIO 04</div>
+        <h4 style="font-family:Cormorant,serif;font-size:24px;margin:8px 0 8px;font-weight:500">Dureza</h4>
+        <p style="font-size:12px;color:var(--text-mute);margin:0">Cuán fuerte juega el campo medio. Menor = más oportunidades.</p>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer reveal" style="margin-top:24px">
+      <span class="ico">!</span>
+      <div>
+        <b style="color:var(--text)">Aviso informativo.</b> Los nombres y datos de esta página son ejemplos demostrativos. Antes de jugar con dinero real, verifica la licencia de cualquier sala en tu jurisdicción y asegúrate de que cumple la normativa local. Solver no se responsabiliza de pérdidas derivadas del juego.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section style="padding:80px 0">
+  <div class="container">
+    <div class="panel reveal" style="padding:60px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center;border-color:oklch(0.78 0.13 82 / 0.3);background:radial-gradient(ellipse at top right,oklch(0.78 0.13 82 / 0.12),transparent 60%),linear-gradient(180deg,var(--bg-2),var(--bg-1))">
+      <div>
+        <h2 class="font-display" style="font-size:52px;margin:0 0 16px">Antes de elegir sala, entrénate.</h2>
+        <p style="color:var(--text-mute);font-size:17px;margin:0;max-width:520px">Practica gratis contra la CPU y deja que la AI evalúe tus decisiones. Llegarás a las mesas reales con un plan claro.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a class="btn btn-primary btn-lg" href="practicar.html">Practicar gratis →</a>
+        <a class="btn btn-ghost btn-lg" href="asistente.html">Abrir asistente AI</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="responsible reveal">
+      <div class="ico">⚠</div>
+      <div class="body">
+        <h4>Juego responsable</h4>
+        <p>El contenido de Solver es informativo y educativo. Si decides jugar con dinero real, hazlo de forma consciente y dentro de tus límites. +18.</p>
+      </div>
+    </div>
+
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="brand" style="margin-bottom:16px">
+          <div class="brand-mark"></div>
+          <div><b>Solver</b><small style="display:block;margin-top:-2px">Poker · AI</small></div>
+        </div>
+        <p style="color:var(--text-mute);font-size:13px;max-width:300px;margin:0">Estrategia, no suerte.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Plataforma</h5>
+        <a href="aprende.html">Aprende</a>
+        <a href="practicar.html">Practicar</a>
+        <a href="asistente.html">Asistente AI</a>
+        <a href="dashboard.html">Dashboard</a>
+      </div>
+      <div class="foot-col">
+        <h5>Recursos</h5>
+        <a href="ranking.html">Ranking</a>
+        <a href="aprende.html#manos">Valor de manos</a>
+        <a href="aprende.html#terminos">Glosario</a>
+      </div>
+      <div class="foot-col">
+        <h5>Legal</h5>
+        <a href="terminos.html">Términos</a>
+        <a href="privacidad.html">Privacidad</a>
+        <a href="juego-responsable.html">Juego responsable</a>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 Solver Poker.</span>
+      <span>+18 · Juega con responsabilidad</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/src/services/api-client.js"></script>
+<script src="/src/apps/ranking/ranking-app.js"></script>
+<script src="/src/shared/ui.js"></script>
+</body>
+</html>
