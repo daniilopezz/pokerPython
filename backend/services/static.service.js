@@ -8,6 +8,7 @@ const gzip = require("node:util").promisify(zlib.gzip);
 
 const pageFiles = new Set([
   "aprende.html",
+  "salas.html",
   "ranking.html",
   "practicar.html",
   "asistente.html",

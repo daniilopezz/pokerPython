@@ -24,8 +24,8 @@
   - Elementos clicables implementados como div/span, con accesibilidad limitada.
   - No hay foco visible global para botones/enlaces.
   - Enlaces legales (Términos, Privacidad, Juego responsable, Contacto) apuntan a #.
-  - Hay datos demo/hardcodeados en home, ranking y dashboard.
-  - Error visual real: frontend/pages/ranking.html tiene style="padting:16px...".
+  - Hay datos demo/hardcodeados en home y dashboard.
+  - La sección de salas se renombró a frontend/pages/salas.html y conserva ranking.html como redirección.
 
   ### Backend
 
@@ -103,7 +103,7 @@
   - Dashboard basado en datos del usuario.
   - Autenticación si hay usuarios.
   - Guardado de recomendaciones.
-  - Ranking de salas gestionable o basado en datos reales.
+  - Mantener actualizados los bonos reales de salas con revisión periódica.
   - Páginas legales reales.
   - Estado de loading/error/success homogéneo.
   - Responsive completo en móvil.
@@ -129,7 +129,7 @@
 
   - Corregir responsive móvil en asistente, práctica y dashboard.
   - Reparar enlaces legales o crear páginas.
-  - Corregir typo padting.
+  - Revisar typos y estilos inline residuales.
   - Añadir foco visible y accesibilidad básica.
 
   ### Fase 2: Backend y lógica funcional

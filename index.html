@@ -26,7 +26,7 @@
     <div class="nav-links">
       <a data-nav-link href="index.html">Inicio</a>
       <a data-nav-link href="aprende.html">Aprende</a>
-      <a data-nav-link href="ranking.html">Ranking</a>
+      <a data-nav-link href="salas.html">Salas y bonos</a>
       <a data-nav-link href="practicar.html">Practicar</a>
       <a data-nav-link href="asistente.html">Asistente AI</a>
       <a data-nav-link href="dashboard.html">Dashboard</a>
@@ -42,7 +42,7 @@
   <div class="drawer" data-drawer>
     <a data-nav-link href="index.html">Inicio</a>
     <a data-nav-link href="aprende.html">Aprende</a>
-    <a data-nav-link href="ranking.html">Ranking</a>
+    <a data-nav-link href="salas.html">Salas y bonos</a>
     <a data-nav-link href="practicar.html">Practicar</a>
     <a data-nav-link href="asistente.html">Asistente AI</a>
     <a data-nav-link href="dashboard.html">Dashboard</a>
@@ -214,17 +214,17 @@
         </div>
       </a>
 
-      <!-- Feature: Ranking -->
-      <a class="panel learn-card reveal" href="ranking.html" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;padding:32px;min-height:340px;justify-content:space-between">
+      <!-- Feature: Salas y bonos -->
+      <a class="panel learn-card reveal" href="salas.html" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;padding:32px;min-height:340px;justify-content:space-between">
         <div>
-          <div class="pill pill-gold">02 · Ranking</div>
-          <h3 style="font-size:36px;margin:20px 0 12px">Las mejores salas online.</h3>
-          <p style="font-size:15px;max-width:380px">Comparativa curada por nivel, seguridad, experiencia y tipo de mesas. Encuentra dónde jugar según tu perfil.</p>
+          <div class="pill pill-gold">02 · Salas y bonos</div>
+          <h3 style="font-size:36px;margin:20px 0 12px">Dónde jugar con datos reales.</h3>
+          <p style="font-size:15px;max-width:380px">Comparativa de salas reales, enlaces oficiales y bonos de registro. Antes de depositar, revisa condiciones y juega con límites.</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;margin-top:24px">
-          <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:80px">Seguridad</span><div class="b"><div style="width:96%"></div></div><span class="n">9.6</span></div>
-          <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:80px">UX</span><div class="b"><div style="width:88%"></div></div><span class="n">8.8</span></div>
-          <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:80px">Tráfico</span><div class="b"><div style="width:74%"></div></div><span class="n">7.4</span></div>
+          <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:90px">PokerStars</span><div class="b"><div style="width:94%"></div></div><span class="n">200€</span></div>
+          <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:90px">888poker</span><div class="b"><div style="width:89%"></div></div><span class="n">200€</span></div>
+          <div class="rank-bar"><span class="font-mono" style="font-size:10px;color:var(--text-dim);width:90px">bet365</span><div class="b"><div style="width:83%"></div></div><span class="n">365€</span></div>
         </div>
       </a>
 
@@ -300,7 +300,45 @@
 </section>
 
 <!-- ============================================================ TRAILER PREVIEW -->
-<div id="trailer-embed-root"></div>
+<div id="trailer-embed-root">
+  <section class="trailer-preview" data-screen-label="trailer-preview">
+    <div class="container trailer-preview-grid">
+      <div class="trailer-preview-copy reveal">
+        <div class="eyebrow"><span class="dot"></span>Trailer cinemático</div>
+        <h2 class="font-display">Una mano en 16 segundos.</h2>
+        <p>Un vistazo al flujo de Solver: cartas, equity, apuesta y recomendación AI en una secuencia compacta.</p>
+        <div class="trailer-preview-actions">
+          <a class="btn btn-primary btn-lg" href="trailer.html">Ver en pantalla completa</a>
+          <a class="btn btn-ghost btn-lg" href="practicar.html">Jugar demo</a>
+        </div>
+      </div>
+
+      <div class="trailer-preview-player reveal" aria-label="Vista previa del trailer de Solver Poker">
+        <div class="trailer-preview-frame">
+          <div class="trailer-static-scene">
+            <div class="trailer-static-hand">
+              <div class="card-3d red" style="transform:rotate(-7deg)">
+                <div class="corner tl"><span class="rank">A</span><span class="suit">♥</span></div>
+                <div class="pip">♥</div>
+                <div class="corner br"><span class="rank">A</span><span class="suit">♥</span></div>
+              </div>
+              <div class="card-3d" style="transform:rotate(6deg)">
+                <div class="corner tl"><span class="rank">K</span><span class="suit">♠</span></div>
+                <div class="pip">♠</div>
+                <div class="corner br"><span class="rank">K</span><span class="suit">♠</span></div>
+              </div>
+            </div>
+            <div class="trailer-static-chip">Recomendación AI<strong>Raise</strong></div>
+          </div>
+        </div>
+        <div class="trailer-preview-controls">
+          <a class="room-source" href="trailer.html">Abrir trailer</a>
+          <span class="trailer-time">0:00 / 0:16</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
 <!-- ============================================================ HOW IT WORKS -->
 <section data-screen-label="how it works" style="background:linear-gradient(180deg,var(--bg-0),var(--bg-1) 50%,var(--bg-0))">
@@ -390,7 +428,7 @@
       </div>
       <div class="foot-col">
         <h5>Recursos</h5>
-        <a href="ranking.html">Ranking de salas</a>
+        <a href="salas.html">Salas y bonos</a>
         <a href="aprende.html#manos">Valor de manos</a>
         <a href="aprende.html#fases">Fases de la partida</a>
         <a href="aprende.html#terminos">Glosario</a>

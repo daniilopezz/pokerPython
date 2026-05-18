@@ -9,7 +9,7 @@ Solver Poker es una aplicación web que combina:
 - **Simulador heads-up** — partidas contra una CPU adaptativa con feedback AI post-mano
 - **Asistente AI en tiempo real** — recomendaciones de acción basadas en equity, posición y contexto
 - **Dashboard de analítica** — métricas persistidas, curva de EV, distribución de acciones y errores frecuentes
-- **Ranking de salas** — comparativa servida desde API por seguridad, UX y tráfico
+- **Salas y bonos** — comparativa servida desde API con operadores reales, enlaces oficiales y bonos de registro
 - **Trailer cinemático** — presentación reproducible del producto
 
 Todo el motor de cálculo de poker (evaluador de manos, Monte Carlo equity, decisor CPU) está implementado en JavaScript puro sin dependencias, compartido entre backend y frontend.
@@ -124,7 +124,7 @@ poker/
 |--------|------|-------------|
 | `GET` | `/api/health` | Estado del servidor |
 | `GET` | `/api/dashboard/summary` | Datos del dashboard analítico |
-| `GET` | `/api/poker/rooms` | Ranking de salas desde el store |
+| `GET` | `/api/poker/rooms` | Salas y bonos desde el store |
 | `GET` | `/api/poker/hands` | Últimas manos guardadas |
 | `GET` | `/api/poker/recommendations` | Recomendaciones guardadas |
 | `POST` | `/api/poker/equity` | Cálculo de equity Monte Carlo |

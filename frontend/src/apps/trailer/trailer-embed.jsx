@@ -164,7 +164,7 @@ function HomeTrailerPreview() {
 }
 
 const embedEl = document.getElementById("trailer-embed-root");
-if (embedEl) {
+if (embedEl && window.React && window.ReactDOM && window.TimelineContext && window.TrailerInner) {
   const root = ReactDOM.createRoot(embedEl);
   root.render(<HomeTrailerPreview />);
 }
